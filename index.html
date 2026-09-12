@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ============================================================
+       SEO BÁSICO
+       Dados institucionais obtidos de https://gasigliaadvocacia.com/imobiliario/
+       ============================================================ -->
+  <title>Advocacia para Problemas com Imóveis na Planta | Gasiglia Advocacia</title>
+  <meta name="description" content="Orientação jurídica para compradores de imóveis na planta que enfrentam atraso na entrega, defeitos, cobranças, distrato ou problemas contratuais.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0B1F3A">
+  <link rel="canonical" href="https://gasigliaadvocacia.com/imobiliario/">
+
+  <!-- Open Graph / redes sociais -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Gasiglia Advocacia">
+  <meta property="og:title" content="Advocacia para Problemas com Imóveis na Planta | Gasiglia Advocacia">
+  <meta property="og:description" content="Orientação jurídica para compradores de imóveis na planta que enfrentam atraso na entrega, defeitos, cobranças, distrato ou problemas contratuais.">
+  <meta property="og:url" content="https://gasigliaadvocacia.com/imobiliario/">
+  <meta property="og:image" content="https://gasigliaadvocacia.com/wp-content/uploads/2023/01/logo2.1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advocacia para Problemas com Imóveis na Planta | Gasiglia Advocacia">
+  <meta name="twitter:description" content="Orientação jurídica para compradores de imóveis na planta que enfrentam atraso na entrega, defeitos, cobranças, distrato ou problemas contratuais.">
+  <meta name="twitter:image" content="https://gasigliaadvocacia.com/wp-content/uploads/2023/01/logo2.1.png">
+
+  <!-- Favicon simples em SVG (substitua por um arquivo real se desejar) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1F3A'/%3E%3Cpath d='M32 14 12 30h6v20h28V30h6z' fill='%23B89146'/%3E%3C/svg%3E">
+
+  <!-- ============================================================
+       FONTES E BIBLIOTECAS (CDN)
+       ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- ============================================================
+       SCHEMA.ORG (Serviço jurídico / empresa local)
+       Preencha apenas com dados reais. Remova campos não aplicáveis.
+       ============================================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "Gasiglia Advocacia",
+    "description": "Escritório de advocacia com atuação em Direito Imobiliário, voltado à orientação de compradores de imóveis na planta.",
+    "url": "https://gasigliaadvocacia.com/imobiliario/",
+    "telephone": "+55 21 98233-8233",
+    "email": "eduardo@gasigliaadvocacia.com.br",
+    "image": "https://gasigliaadvocacia.com/wp-content/uploads/2023/01/logo2.1.png",
+    "priceRange": "Sob consulta",
+    "areaServed": "Rio de Janeiro – RJ",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Av. Rio Branco, 131, sala 1703, Centro",
+      "addressLocality": "Rio de Janeiro",
+      "addressRegion": "RJ",
+      "addressCountry": "BR"
+    },
+    "openingHours": "Mo-Fr 09:00-18:00",
+    "founder": {
+      "@type": "Person",
+      "name": "Eduardo Correa Gasiglia Queiroz",
+      "jobTitle": "Advogado – OAB/RJ 199.916"
+    },
+    "sameAs": [
+      "https://www.gasigliaadvocacia.com.br/",
+      "https://www.instagram.com/eduardogasiglia.adv/",
+      "https://www.facebook.com/gasigliaadvocacia",
+      "https://www.linkedin.com/in/eduardo-gasiglia-409a445a/"
+    ],
+    "knowsAbout": ["Direito Imobiliário", "Imóveis na planta", "Contratos imobiliários", "Distrato imobiliário"]
+  }
+  </script>
+
+  <!-- ============================================================
+       CSS PERSONALIZADO (Mobile First)
+       ============================================================ -->
+  <style>
+    /* ---------- 1. Variáveis de design ---------- */
+    :root {
+      --navy: #0B1F3A;
+      --navy-2: #173B67;
+      --gold: #B89146;
+      --gold-soft: rgba(184, 145, 70, 0.14);
+      --bg: #F7F8FA;
+      --white: #FFFFFF;
+      --text: #1E293B;
+      --muted: #64748B;
+      --border: #E5E9F0;
+      --radius: 1rem;
+      --radius-sm: .75rem;
+      --shadow-sm: 0 1px 2px rgba(11, 31, 58, .04), 0 2px 8px rgba(11, 31, 58, .06);
+      --shadow-md: 0 8px 24px rgba(11, 31, 58, .10);
+      --shadow-lg: 0 20px 48px rgba(11, 31, 58, .16);
+      --bottom-bar-h: 64px;
+    }
+
+    /* ---------- 2. Base ---------- */
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;               /* impede rolagem horizontal */
+      padding-bottom: var(--bottom-bar-h); /* espaço para a barra fixa no mobile */
+    }
+    h1, h2, h3, h4, h5 { font-weight: 700; letter-spacing: -.01em; color: var(--navy); line-height: 1.2; overflow-wrap: anywhere; }
+    h1 { font-size: clamp(1.9rem, 5.5vw, 3.25rem); font-weight: 800; }
+    h2 { font-size: clamp(1.55rem, 4vw, 2.35rem); }
+    h3 { font-size: 1.15rem; }
+    p { color: var(--text); }
+    .text-muted { color: var(--muted) !important; }
+    img { max-width: 100%; height: auto; }
+    a { color: var(--navy-2); text-underline-offset: 3px; }
+    a:hover { color: var(--navy); }
+    section { padding-block: 3.5rem; }
+    .section-alt { background: var(--bg); }
+    .lead { font-size: 1.05rem; color: var(--muted); }
+    .content-narrow { max-width: 760px; }
+
+    /* Foco visível e acessível em todos os elementos interativos */
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+    .btn:focus-visible { box-shadow: 0 0 0 .25rem rgba(184, 145, 70, .45); outline: none; }
+
+    /* Link "pular para o conteúdo" */
+    .skip-link {
+      position: absolute; left: 1rem; top: -100px; z-index: 2000;
+      background: var(--navy); color: #fff; padding: .6rem 1rem; border-radius: var(--radius-sm);
+    }
+    .skip-link:focus { top: 1rem; color: #fff; }
+
+    /* ---------- 3. Rótulos e botões ---------- */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: .75rem;
+    }
+    .eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--gold); border-radius: 2px; }
+
+    .btn { font-weight: 600; border-radius: .75rem; padding: .8rem 1.35rem; min-height: 48px; transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease; }
+    .btn:active { transform: scale(.98); }
+    .btn-navy { background: var(--navy); color: #fff; border: 1px solid var(--navy); }
+    .btn-navy:hover, .btn-navy:focus { background: var(--navy-2); border-color: var(--navy-2); color: #fff; box-shadow: var(--shadow-md); }
+    .btn-gold { background: var(--gold); color: #fff; border: 1px solid var(--gold); }
+    .btn-gold:hover, .btn-gold:focus { background: #A37E3A; border-color: #A37E3A; color: #fff; box-shadow: var(--shadow-md); }
+    .btn-outline-navy { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
+    .btn-outline-navy:hover, .btn-outline-navy:focus { background: var(--navy); color: #fff; }
+    .btn-outline-light-soft { background: rgba(255,255,255,.08); color: #fff; border: 1.5px solid rgba(255,255,255,.55); }
+    .btn-outline-light-soft:hover, .btn-outline-light-soft:focus { background: #fff; color: var(--navy); border-color: #fff; }
+    .btn-whatsapp { background: #25D366; color: #fff; border: 1px solid #25D366; }
+    .btn-whatsapp:hover, .btn-whatsapp:focus { background: #1EBE5A; border-color: #1EBE5A; color: #fff; box-shadow: var(--shadow-md); }
+
+    /* ---------- 4. Barra superior ---------- */
+    .topbar { background: var(--navy); color: rgba(255,255,255,.85); font-size: .8rem; }
+    .topbar a { color: #fff; text-decoration: none; }
+    .topbar a:hover { color: var(--gold); }
+    .topbar .bi { color: var(--gold); }
+
+    /* ---------- 5. Navbar ---------- */
+    .navbar { background: rgba(255,255,255,.96); backdrop-filter: saturate(180%) blur(8px); box-shadow: var(--shadow-sm); padding-block: .6rem; }
+    .navbar-brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; color: var(--navy) !important; font-size: 1rem; padding: 0; }
+    /* O logotipo original tem texto branco e monograma dourado (feito para fundo escuro);
+       na navbar clara ele é exibido sobre uma cápsula azul-marinho. */
+    .brand-logo { display: inline-flex; align-items: center; background: var(--navy); border-radius: 10px; padding: .5rem .8rem; }
+    .brand-logo img { height: 28px; width: auto; display: block; }
+    footer .brand-logo { background: transparent; padding: 0; }
+    footer .brand-logo img { height: 40px; }
+    .social-links { display: flex; gap: .6rem; margin-top: 1rem; }
+    .social-links a {
+      width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center;
+      background: rgba(255,255,255,.08); color: #fff; font-size: 1.15rem; transition: background-color .2s ease, color .2s ease;
+    }
+    .social-links a:hover, .social-links a:focus { background: var(--gold); color: var(--navy); }
+    .navbar .nav-link { color: var(--text); font-weight: 500; padding: .6rem .75rem; border-radius: .5rem; }
+    .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--navy); background: var(--bg); }
+    .navbar-toggler { border: 1px solid var(--border); padding: .45rem .6rem; min-height: 44px; min-width: 44px; }
+    .navbar-toggler:focus { box-shadow: 0 0 0 .2rem rgba(184,145,70,.4); }
+
+    /* ---------- 6. Hero ---------- */
+    .hero { background: linear-gradient(180deg, #F7F8FA 0%, #FFFFFF 100%); padding-block: 3rem 3.5rem; position: relative; overflow: hidden; }
+    .hero::after {
+      content: ""; position: absolute; right: -120px; top: -120px; width: 420px; height: 420px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,145,70,.16) 0%, rgba(184,145,70,0) 70%); pointer-events: none;
+    }
+    .hero-figure { position: relative; }
+    .hero-figure img { border-radius: var(--radius); box-shadow: var(--shadow-lg); width: 100%; aspect-ratio: 5 / 4; object-fit: cover; }
+    .hero-badge {
+      position: absolute; left: 1rem; bottom: 1rem; background: #fff; border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-md); padding: .7rem .9rem; display: flex; gap: .65rem; align-items: center; max-width: 85%;
+    }
+    .hero-badge .bi { color: var(--gold); font-size: 1.4rem; }
+    .hero-badge strong { display: block; font-size: .85rem; color: var(--navy); }
+    .hero-badge span { font-size: .75rem; color: var(--muted); }
+    .trust-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .6rem 1.25rem; }
+    .trust-list li { display: flex; align-items: center; gap: .45rem; font-size: .9rem; color: var(--muted); }
+    .trust-list .bi { color: var(--gold); }
+
+    /* ---------- 7. Cards ---------- */
+    .card-soft {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;
+      height: 100%; box-shadow: var(--shadow-sm); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .card-soft:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(184,145,70,.5); }
+    .icon-box {
+      width: 52px; height: 52px; border-radius: 14px; background: var(--gold-soft); color: var(--gold);
+      display: grid; place-items: center; font-size: 1.45rem; margin-bottom: 1rem;
+    }
+    .icon-box.navy { background: rgba(11,31,58,.07); color: var(--navy); }
+    .card-soft p { margin-bottom: 0; color: var(--muted); font-size: .95rem; }
+
+    /* ---------- 8. Lista de documentos ---------- */
+    .doc-list { list-style: none; padding: 0; margin: 0; display: grid; gap: .6rem; }
+    .doc-list li { display: flex; gap: .75rem; align-items: center; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: .8rem 1rem; font-size: .95rem; }
+    .doc-list .bi { color: var(--gold); font-size: 1.15rem; flex-shrink: 0; }
+    .info-note { background: var(--gold-soft); border-left: 4px solid var(--gold); border-radius: var(--radius-sm); padding: 1rem 1.15rem; font-size: .93rem; color: var(--text); }
+
+    /* ---------- 9. Etapas (timeline responsiva) ---------- */
+    .steps { position: relative; display: grid; gap: 1.25rem; }
+    .step { position: relative; background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.5rem 1.5rem 4.5rem; box-shadow: var(--shadow-sm); }
+    .step-number {
+      position: absolute; left: 1.25rem; top: 1.4rem; width: 40px; height: 40px; border-radius: 50%;
+      background: var(--navy); color: var(--gold); font-weight: 700; display: grid; place-items: center; font-size: 1rem;
+    }
+    .step h3 { font-size: 1.05rem; margin-bottom: .35rem; }
+    .step p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+    /* ---------- 10. Sobre ---------- */
+    .about-figure img { border-radius: var(--radius); box-shadow: var(--shadow-md); width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+    .about-facts { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
+    .about-facts li { display: flex; gap: .75rem; align-items: flex-start; font-size: .95rem; }
+    .about-facts .bi { color: var(--gold); margin-top: .15rem; }
+    .about-facts strong { color: var(--navy); }
+
+    /* ---------- 11. Depoimentos ---------- */
+    .testimonial { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; height: 100%; box-shadow: var(--shadow-sm); }
+    .testimonial .bi-quote { color: var(--gold); font-size: 1.8rem; }
+    .testimonial-author { display: flex; align-items: center; gap: .75rem; margin-top: 1rem; }
+    .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--navy); color: var(--gold); display: grid; place-items: center; font-weight: 700; }
+
+    /* ---------- 12. FAQ ---------- */
+    .accordion-item { border: 1px solid var(--border); border-radius: var(--radius-sm) !important; margin-bottom: .75rem; overflow: hidden; }
+    .accordion-button { font-weight: 600; color: var(--navy); padding: 1.1rem 1.25rem; font-size: .98rem; }
+    .accordion-button:not(.collapsed) { background: var(--gold-soft); color: var(--navy); box-shadow: none; }
+    .accordion-button:focus { box-shadow: 0 0 0 .2rem rgba(184,145,70,.35); }
+    .accordion-button::after { filter: grayscale(1); }
+    .accordion-body { color: var(--muted); font-size: .95rem; }
+
+    /* ---------- 13. Formulário ---------- */
+    .form-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow-md); }
+    .form-label { font-weight: 600; font-size: .9rem; color: var(--navy); }
+    .form-control, .form-select { border-radius: .7rem; padding: .75rem .9rem; min-height: 48px; border-color: #D5DBE4; }
+    .form-control:focus, .form-select:focus { border-color: var(--gold); box-shadow: 0 0 0 .2rem rgba(184,145,70,.25); }
+    .form-check-input:checked { background-color: var(--navy); border-color: var(--navy); }
+    .form-check-input:focus { box-shadow: 0 0 0 .2rem rgba(184,145,70,.25); border-color: var(--gold); }
+    .legal-note { font-size: .82rem; color: var(--muted); }
+
+    /* ---------- 14. CTA final ---------- */
+    .cta-final { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%); color: #fff; }
+    .cta-final h2 { color: #fff; }
+    .cta-final p { color: rgba(255,255,255,.82); }
+
+    /* ---------- 15. Rodapé ---------- */
+    footer { background: #08172B; color: rgba(255,255,255,.78); font-size: .92rem; }
+    footer p { color: inherit; }
+    footer h4 { color: #fff; font-size: .95rem; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 1rem; }
+    footer a { color: rgba(255,255,255,.78); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+    footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }
+    footer .bi { color: var(--gold); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); font-size: .8rem; color: rgba(255,255,255,.55); }
+
+    /* ---------- 16. WhatsApp flutuante e barra fixa (mobile) ---------- */
+    .whatsapp-float {
+      position: fixed; right: 1rem; bottom: calc(var(--bottom-bar-h) + 1rem); z-index: 1040;
+      width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: #fff;
+      display: grid; place-items: center; font-size: 1.7rem; box-shadow: 0 8px 20px rgba(37,211,102,.4);
+      transition: transform .15s ease, box-shadow .2s ease;
+    }
+    .whatsapp-float:hover, .whatsapp-float:focus { transform: scale(1.06); color: #fff; box-shadow: 0 10px 26px rgba(37,211,102,.5); }
+    .whatsapp-float:active { transform: scale(.96); }
+
+    .bottom-bar {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 1030; height: var(--bottom-bar-h);
+      background: rgba(255,255,255,.97); border-top: 1px solid var(--border); box-shadow: 0 -6px 20px rgba(11,31,58,.08);
+      display: flex; gap: .5rem; padding: .6rem 1rem; padding-bottom: max(.6rem, env(safe-area-inset-bottom));
+    }
+    .bottom-bar .btn { flex: 1; padding: .55rem .5rem; min-height: 44px; font-size: .9rem; }
+
+    /* ---------- 17. Animações ao rolar ---------- */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .reveal[data-delay="1"] { transition-delay: .1s; }
+    .reveal[data-delay="2"] { transition-delay: .2s; }
+    .reveal[data-delay="3"] { transition-delay: .3s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+
+    /* ---------- 18. Ajustes para tablets e desktop ---------- */
+    @media (min-width: 768px) {
+      section { padding-block: 5rem; }
+      .hero { padding-block: 4.5rem 5rem; }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .form-card { padding: 2.25rem; }
+      .whatsapp-float { right: 1.5rem; bottom: 1.5rem; }
+      .bottom-bar { display: none; }
+      body { padding-bottom: 0; }
+    }
+    @media (min-width: 992px) {
+      .hero { padding-block: 5.5rem 6rem; }
+      .navbar .nav-link { padding: .5rem .8rem; }
+      .steps { grid-template-columns: repeat(4, 1fr); }
+      .step { padding: 3.6rem 1.35rem 1.5rem; }
+      .step-number { left: 1.35rem; top: 1.35rem; }
+      /* linha que conecta as etapas no desktop */
+      .steps::before { content: ""; position: absolute; left: 6%; right: 6%; top: 2.6rem; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); z-index: 0; }
+      .step { z-index: 1; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============================================================
+       1. BARRA SUPERIOR
+       ============================================================ -->
+  <div class="topbar py-2">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <span><i class="bi bi-building-check me-1" aria-hidden="true"></i> Atendimento presencial e on-line</span>
+      <div class="d-flex flex-wrap gap-3">
+        <a href="tel:+5521982338233" class="d-none d-sm-inline"><i class="bi bi-telephone me-1" aria-hidden="true"></i>(21) 98233-8233</a>
+        <a href="#" class="js-whatsapp" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-1" aria-hidden="true"></i>WhatsApp</a>
+        <span class="d-none d-md-inline"><i class="bi bi-geo-alt me-1" aria-hidden="true"></i>Rio de Janeiro – RJ</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       2. NAVBAR (sticky, com menu recolhível no celular)
+       ============================================================ -->
+  <header class="sticky-top">
+    <nav class="navbar navbar-expand-lg" aria-label="Navegação principal">
+      <div class="container">
+        <a class="navbar-brand" href="#inicio" aria-label="Gasiglia Advocacia – página inicial">
+          <span class="brand-logo">
+            <img src="https://gasigliaadvocacia.com/wp-content/uploads/2023/01/logo2.1-300x70.png" width="300" height="70" alt="Gasiglia Advocacia" decoding="async">
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menu de navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+          <ul class="navbar-nav ms-auto mb-3 mb-lg-0 align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
+            <li class="nav-item"><a class="nav-link" href="#situacoes">Situações atendidas</a></li>
+            <li class="nav-item"><a class="nav-link" href="#como-funciona">Como funciona</a></li>
+            <li class="nav-item"><a class="nav-link" href="#sobre">Sobre o escritório</a></li>
+            <li class="nav-item"><a class="nav-link" href="#faq">Perguntas frequentes</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+          </ul>
+          <div class="d-grid d-lg-block ms-lg-3">
+            <a href="#contato" class="btn btn-gold">Solicitar análise do caso</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ============================================================
+         3. HERO
+         ============================================================ -->
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="row align-items-center g-4 g-lg-5">
+          <div class="col-12 col-lg-6 reveal">
+            <span class="eyebrow">Direito Imobiliário</span>
+            <h1>Problemas com um imóvel comprado na planta?</h1>
+            <p class="lead mt-3 mb-4">Receba orientação jurídica para compreender seus direitos e avaliar os caminhos possíveis para o seu caso.</p>
+            <p class="mb-4">Atraso na entrega, cobranças, defeitos, distrato ou alterações no projeto: cada situação é diferente e merece uma análise cuidadosa do contrato e dos documentos.</p>
+            <div class="d-grid d-md-flex gap-3 mb-4">
+              <a href="#contato" class="btn btn-navy btn-lg"><i class="bi bi-clipboard-check me-2" aria-hidden="true"></i>Quero avaliar meu caso</a>
+              <a href="#" class="btn btn-outline-navy btn-lg js-whatsapp" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-2" aria-hidden="true"></i>Falar pelo WhatsApp</a>
+            </div>
+            <ul class="trust-list">
+              <li><i class="bi bi-person-check" aria-hidden="true"></i>Atendimento individualizado</li>
+              <li><i class="bi bi-shield-lock" aria-hidden="true"></i>Sigilo profissional</li>
+              <li><i class="bi bi-laptop" aria-hidden="true"></i>Presencial e on-line</li>
+            </ul>
+          </div>
+          <div class="col-12 col-lg-6 reveal" data-delay="1">
+            <div class="hero-figure">
+              <!-- Imagem ilustrativa (Unsplash). Pode ser trocada por uma foto própria de 900x720px -->
+              <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=75"
+                   width="900" height="720" alt="Chaves de um imóvel residencial sendo entregues sobre um contrato"
+                   fetchpriority="high" decoding="async"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 900 720%22%3E%3Crect width=%22900%22 height=%22720%22 fill=%22%23173B67%22/%3E%3Cpath d=%22M450 200 260 360h50v180h280V360h50z%22 fill=%22%23B89146%22/%3E%3C/svg%3E'">
+              <div class="hero-badge">
+                <i class="bi bi-chat-square-text" aria-hidden="true"></i>
+                <div>
+                  <strong>Avaliação inicial do caso</strong>
+                  <span>Conte o que aconteceu e receba um retorno sobre os próximos passos.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. IDENTIFICAÇÃO DO PROBLEMA
+         ============================================================ -->
+    <section class="section-alt" id="situacoes">
+      <div class="container">
+        <div class="text-center content-narrow mx-auto mb-5 reveal">
+          <span class="eyebrow">Situações atendidas</span>
+          <h2>Você está enfrentando alguma destas situações?</h2>
+          <p class="lead mt-3">O escritório analisa problemas comuns na compra de imóveis na planta. Veja se a sua situação se parece com alguma delas.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-4 reveal">
+            <article class="card-soft">
+              <div class="icon-box"><i class="bi bi-hourglass-split" aria-hidden="true"></i></div>
+              <h3>Atraso na entrega</h3>
+              <p>O prazo previsto no contrato passou e o imóvel ainda não foi entregue, ou a construtora informou novos adiamentos.</p>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="1">
+            <article class="card-soft">
+              <div class="icon-box"><i class="bi bi-tools" aria-hidden="true"></i></div>
+              <h3>Defeitos no imóvel</h3>
+              <p>Infiltrações, rachaduras, acabamento diferente do prometido ou outros problemas construtivos identificados após a entrega.</p>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="2">
+            <article class="card-soft">
+              <div class="icon-box"><i class="bi bi-receipt" aria-hidden="true"></i></div>
+              <h3>Cobranças contratuais</h3>
+              <p>Dúvidas sobre juros, correção, taxas, comissões ou valores cobrados que não parecem corresponder ao que foi combinado.</p>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 reveal">
+            <article class="card-soft">
+              <div class="icon-box"><i class="bi bi-file-earmark-x" aria-hidden="true"></i></div>
+              <h3>Distrato imobiliário</h3>
+              <p>Dificuldade para cancelar o contrato ou dúvidas sobre os valores retidos pela construtora após o pedido de distrato.</p>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="1">
+            <article class="card-soft">
+              <div class="icon-box"><i class="bi bi-rulers" aria-hidden="true"></i></div>
+              <h3>Alteração do projeto</h3>
+              <p>Mudanças na planta, na metragem, nas áreas comuns ou nos itens de lazer em relação ao que foi apresentado na compra.</p>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="2">
+            <article class="card-soft">
+              <div class="icon-box"><i class="bi bi-folder2-open" aria-hidden="true"></i></div>
+              <h3>Problemas com documentação</h3>
+              <p>Pendências na matrícula, no habite-se, na escritura ou em outros documentos necessários para regularizar o imóvel.</p>
+            </article>
+          </div>
+        </div>
+        <div class="text-center mt-5 reveal">
+          <a href="#contato" class="btn btn-navy btn-lg">Conversar sobre minha situação</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. ATRASO NA ENTREGA (conteúdo educativo)
+         ============================================================ -->
+    <section id="atraso">
+      <div class="container">
+        <div class="row g-4 g-lg-5 align-items-start">
+          <div class="col-12 col-lg-6 reveal">
+            <span class="eyebrow">Atraso na entrega</span>
+            <h2>Cada contrato e cada situação precisam ser analisados individualmente</h2>
+            <p class="mt-3">Os contratos de compra de imóveis na planta costumam prever prazos, tolerâncias e condições específicas para a entrega. Por isso, a existência de um atraso não permite, por si só, uma conclusão sobre os direitos do comprador.</p>
+            <p>Documentos, prazos, comunicações e as justificativas apresentadas pela construtora podem ser relevantes para compreender o contexto e identificar os caminhos aplicáveis.</p>
+            <p>O escritório pode avaliar a situação de forma individualizada, considerando o contrato, o histórico da obra e os documentos disponíveis, e orientar sobre as alternativas que fizerem sentido para o seu caso.</p>
+            <div class="info-note mt-4">
+              <i class="bi bi-info-circle me-2" aria-hidden="true"></i>
+              Esta página tem caráter informativo. Nenhuma conclusão jurídica é apresentada de forma automática; ela depende da análise do seu contrato e dos seus documentos.
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 reveal" data-delay="1">
+            <div class="card-soft">
+              <h3 class="mb-1">Documentos que podem ajudar na avaliação inicial</h3>
+              <p class="mb-3">Não é necessário ter todos. Separe o que estiver ao seu alcance.</p>
+              <ul class="doc-list">
+                <li><i class="bi bi-file-earmark-text" aria-hidden="true"></i>Contrato de compra e venda</li>
+                <li><i class="bi bi-cash-stack" aria-hidden="true"></i>Comprovantes de pagamento</li>
+                <li><i class="bi bi-envelope-paper" aria-hidden="true"></i>Comunicados da construtora</li>
+                <li><i class="bi bi-megaphone" aria-hidden="true"></i>Materiais de divulgação (folders, anúncios, plantas)</li>
+                <li><i class="bi bi-camera" aria-hidden="true"></i>Fotografias do imóvel ou da obra</li>
+                <li><i class="bi bi-chat-dots" aria-hidden="true"></i>E-mails e mensagens trocadas</li>
+                <li><i class="bi bi-key" aria-hidden="true"></i>Documentos relativos à entrega do imóvel</li>
+              </ul>
+              <p class="legal-note mt-3 mb-0">Não envie documentos por esta página. Eles poderão ser solicitados de forma segura após o primeiro contato.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6. COMO FUNCIONA O ATENDIMENTO
+         ============================================================ -->
+    <section class="section-alt" id="como-funciona">
+      <div class="container">
+        <div class="text-center content-narrow mx-auto mb-5 reveal">
+          <span class="eyebrow">Como funciona</span>
+          <h2>Um atendimento organizado, em quatro etapas</h2>
+          <p class="lead mt-3">Do primeiro contato até a orientação sobre os próximos passos, o processo é simples e transparente.</p>
+        </div>
+        <div class="steps">
+          <article class="step reveal">
+            <span class="step-number" aria-hidden="true">1</span>
+            <h3>Você envia um resumo da situação</h3>
+            <p>Pelo formulário ou pelo WhatsApp, conte brevemente o que aconteceu com o seu imóvel.</p>
+          </article>
+          <article class="step reveal" data-delay="1">
+            <span class="step-number" aria-hidden="true">2</span>
+            <h3>O escritório realiza uma avaliação inicial</h3>
+            <p>Entramos em contato para entender melhor o contexto e esclarecer as primeiras dúvidas.</p>
+          </article>
+          <article class="step reveal" data-delay="2">
+            <span class="step-number" aria-hidden="true">3</span>
+            <h3>Os documentos e o contrato são analisados</h3>
+            <p>O contrato, os comprovantes e as comunicações são examinados com atenção aos detalhes do seu caso.</p>
+          </article>
+          <article class="step reveal" data-delay="3">
+            <span class="step-number" aria-hidden="true">4</span>
+            <h3>Você recebe orientação sobre os possíveis próximos passos</h3>
+            <p>Apresentamos, com linguagem clara, os caminhos que podem ser considerados a partir da análise realizada.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7. SOBRE O ESCRITÓRIO
+         Substitua os placeholders. Não inclua dados não verificados.
+         ============================================================ -->
+    <section id="sobre">
+      <div class="container">
+        <div class="row g-4 g-lg-5 align-items-center">
+          <div class="col-12 col-md-5 col-lg-5 reveal">
+            <div class="about-figure">
+              <!-- Foto oficial do advogado, publicada em gasigliaadvocacia.com -->
+              <img src="https://gasigliaadvocacia.com/wp-content/uploads/2023/01/63a21a489ccb5-e1760965028510.jpeg"
+                   width="530" height="650" alt="Dr. Eduardo Correa Gasiglia Queiroz, advogado responsável pelo escritório" loading="lazy" decoding="async"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 640 800%22%3E%3Crect width=%22640%22 height=%22800%22 fill=%22%230B1F3A%22/%3E%3Ccircle cx=%22320%22 cy=%22320%22 r=%22110%22 fill=%22%23B89146%22/%3E%3Cpath d=%22M120 700c20-140 110-210 200-210s180 70 200 210z%22 fill=%22%23B89146%22/%3E%3C/svg%3E'">
+            </div>
+          </div>
+          <div class="col-12 col-md-7 col-lg-7 reveal" data-delay="1">
+            <span class="eyebrow">Sobre o escritório</span>
+            <h2>Gasiglia Advocacia</h2>
+            <p class="lead mt-3">Advocacia com atuação focada em Direito Imobiliário.</p>
+            <p>O escritório atende compradores de imóveis na planta que precisam compreender seus contratos, esclarecer dúvidas e avaliar os caminhos possíveis diante de atrasos, defeitos, cobranças e outras dificuldades. O atendimento é conduzido com linguagem clara, análise documental cuidadosa e comunicação transparente em todas as etapas.</p>
+            <ul class="about-facts mt-4">
+              <li><i class="bi bi-person-badge" aria-hidden="true"></i><span><strong>Responsável:</strong> Dr. Eduardo Correa Gasiglia Queiroz — OAB/RJ 199.916</span></li>
+              <li><i class="bi bi-award" aria-hidden="true"></i><span><strong>Atuação institucional:</strong> Presidente da Comissão de Direito do Consumidor da Associação Brasileira de Advogados do Rio de Janeiro (ABA-RJ) e membro da Comissão de Juizados Especiais da OAB/RJ</span></li>
+              <li><i class="bi bi-briefcase" aria-hidden="true"></i><span><strong>Área de atuação:</strong> Direito Imobiliário e Condominial</span></li>
+              <li><i class="bi bi-geo-alt" aria-hidden="true"></i><span><strong>Cidade e região atendida:</strong> Rio de Janeiro – RJ e região</span></li>
+              <li><i class="bi bi-laptop" aria-hidden="true"></i><span><strong>Forma de atendimento:</strong> presencial, mediante agendamento, e on-line por videochamada</span></li>
+              <li><i class="bi bi-envelope" aria-hidden="true"></i><span><strong>E-mail:</strong> <a href="mailto:eduardo@gasigliaadvocacia.com.br">eduardo@gasigliaadvocacia.com.br</a></span></li>
+            </ul>
+            <div class="d-grid d-md-flex gap-3 mt-4">
+              <a href="#contato" class="btn btn-navy">Agendar uma conversa</a>
+              <a href="#" class="btn btn-outline-navy js-whatsapp" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-2" aria-hidden="true"></i>Falar pelo WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         8. DIFERENCIAIS DO ATENDIMENTO
+         ============================================================ -->
+    <section class="section-alt" id="diferenciais">
+      <div class="container">
+        <div class="text-center content-narrow mx-auto mb-5 reveal">
+          <span class="eyebrow">Diferenciais</span>
+          <h2>Como conduzimos o atendimento</h2>
+          <p class="lead mt-3">Compromissos objetivos com quem procura o escritório.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-4 reveal">
+            <article class="card-soft">
+              <div class="icon-box navy"><i class="bi bi-person-heart" aria-hidden="true"></i></div>
+              <h3>Atendimento individualizado</h3>
+              <p>Cada caso é analisado a partir do seu próprio contrato, histórico e documentos.</p>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="1">
+            <article class="card-soft">
+              <div class="icon-box navy"><i class="bi bi-chat-left-text" aria-hidden="true"></i></div>
+              <h3>Linguagem clara</h3>
+              <p>Explicamos os termos e as etapas de forma compreensível, sem excesso de jargão jurídico.</p>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="2">
+            <article class="card-soft">
+              <div class="icon-box navy"><i class="bi bi-search" aria-hidden="true"></i></div>
+              <h3>Análise documental cuidadosa</h3>
+              <p>Contrato, comprovantes e comunicações são examinados com atenção aos detalhes relevantes.</p>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 reveal">
+            <article class="card-soft">
+              <div class="icon-box navy"><i class="bi bi-eye" aria-hidden="true"></i></div>
+              <h3>Comunicação transparente</h3>
+              <p>Você é informado sobre as possibilidades, as limitações e o andamento de cada etapa.</p>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="1">
+            <article class="card-soft">
+              <div class="icon-box navy"><i class="bi bi-buildings" aria-hidden="true"></i></div>
+              <h3>Atuação focada em Direito Imobiliário</h3>
+              <p>Dedicação a questões de compra, contratos e entrega de imóveis.</p>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="2">
+            <article class="card-soft">
+              <div class="icon-box navy"><i class="bi bi-camera-video" aria-hidden="true"></i></div>
+              <h3>Atendimento presencial e on-line</h3>
+              <p>Reuniões no escritório ou por videochamada, conforme a sua preferência e disponibilidade.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         9. DEPOIMENTOS (opcional)
+         ATENÇÃO: substitua por relatos AUTÊNTICOS e PREVIAMENTE AUTORIZADOS
+         pelos clientes. Enquanto o array TESTIMONIALS (no script) estiver
+         vazio, esta seção fica oculta automaticamente.
+         ============================================================ -->
+    <section id="depoimentos" hidden>
+      <div class="container">
+        <div class="text-center content-narrow mx-auto mb-5 reveal">
+          <span class="eyebrow">Depoimentos</span>
+          <h2>O que dizem as pessoas atendidas</h2>
+          <p class="lead mt-3">Relatos autorizados por clientes do escritório.</p>
+        </div>
+        <div class="row g-4" id="listaDepoimentos"><!-- preenchido via JavaScript --></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         10. PERGUNTAS FREQUENTES
+         ============================================================ -->
+    <section class="section-alt" id="faq">
+      <div class="container">
+        <div class="text-center content-narrow mx-auto mb-5 reveal">
+          <span class="eyebrow">Perguntas frequentes</span>
+          <h2>Dúvidas comuns de quem comprou na planta</h2>
+          <p class="lead mt-3">As respostas abaixo são gerais. A orientação para o seu caso depende da análise do contrato e dos documentos.</p>
+        </div>
+        <div class="accordion content-narrow mx-auto reveal" id="accordionFaq">
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">O que devo fazer se a entrega do imóvel estiver atrasada?</button>
+            </h3>
+            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+              <div class="accordion-body">Um primeiro passo é reunir o contrato, os comunicados da construtora e os comprovantes de pagamento, além de registrar as datas e as justificativas apresentadas. Com esse material, é possível realizar uma avaliação inicial e verificar quais caminhos podem ser considerados no seu caso específico.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">Quais documentos devo separar?</button>
+            </h3>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+              <div class="accordion-body">Contrato de compra e venda, comprovantes de pagamento, comunicados e e-mails da construtora, materiais de divulgação (folders, anúncios, plantas), fotografias e documentos relativos à entrega. Não é necessário ter todos; separe o que estiver disponível.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">É possível analisar um contrato antes da entrega?</button>
+            </h3>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+              <div class="accordion-body">Sim. A análise do contrato pode ser feita em qualquer momento, inclusive antes da assinatura ou durante o período de obras, para esclarecer cláusulas, prazos, tolerâncias e condições de pagamento. Isso ajuda a compreender melhor o que foi acordado.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">O escritório realiza atendimento on-line?</button>
+            </h3>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+              <div class="accordion-body">Sim. O atendimento pode ser realizado presencialmente, mediante agendamento, ou on-line, por videochamada, conforme a preferência e a localização de cada pessoa.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">Como funciona a avaliação inicial?</button>
+            </h3>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+              <div class="accordion-body">Após o envio de um resumo da situação pelo formulário ou pelo WhatsApp, o escritório entra em contato para compreender o contexto. Em seguida, o contrato e os documentos são analisados e você recebe orientação sobre os possíveis próximos passos. As condições do atendimento são informadas de forma transparente nesse primeiro contato.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">Posso buscar orientação mesmo que ainda esteja pagando o imóvel?</button>
+            </h3>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+              <div class="accordion-body">Sim. Muitas dúvidas surgem justamente durante o período de pagamento, como questões sobre correção, juros, prazos e comunicações da construtora. A orientação pode ser buscada em qualquer fase do contrato.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7" aria-expanded="false" aria-controls="faq7">Cada atraso gera automaticamente direito a indenização?</button>
+            </h3>
+            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+              <div class="accordion-body">Não. A existência de um atraso não permite, por si só, uma conclusão sobre eventuais direitos. É necessário analisar o contrato, os prazos e tolerâncias previstos, as justificativas apresentadas pela construtora e as circunstâncias específicas de cada caso. Somente após essa análise é possível orientar sobre as alternativas aplicáveis.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         11. FORMULÁRIO DE CONTATO
+         Integração: defina CONFIG.FORM_ENDPOINT no script para enviar os
+         dados a uma API, CRM ou serviço de e-mail. Sem endpoint, a página
+         não simula envio e orienta o visitante a usar WhatsApp ou e-mail.
+         ============================================================ -->
+    <section id="contato">
+      <div class="container">
+        <div class="row g-4 g-lg-5 justify-content-center">
+          <div class="col-12 col-lg-5 reveal">
+            <span class="eyebrow">Contato</span>
+            <h2>Solicite uma avaliação inicial do seu caso</h2>
+            <p class="lead mt-3">Preencha o formulário com um breve resumo da situação. Entraremos em contato pelo canal de sua preferência.</p>
+            <ul class="about-facts mt-4">
+              <li><i class="bi bi-whatsapp" aria-hidden="true"></i><span><strong>WhatsApp:</strong> <a href="#" class="js-whatsapp" target="_blank" rel="noopener">(21) 98233-8233</a></span></li>
+              <li><i class="bi bi-telephone" aria-hidden="true"></i><span><strong>Telefone:</strong> <a href="tel:+5521982338233">(21) 98233-8233</a></span></li>
+              <li><i class="bi bi-envelope" aria-hidden="true"></i><span><strong>E-mail:</strong> <a href="mailto:eduardo@gasigliaadvocacia.com.br">eduardo@gasigliaadvocacia.com.br</a></span></li>
+              <li><i class="bi bi-geo-alt" aria-hidden="true"></i><span><strong>Endereço:</strong> Av. Rio Branco, 131, sala 1703, Centro, Rio de Janeiro – RJ</span></li>
+              <li><i class="bi bi-clock" aria-hidden="true"></i><span><strong>Horário:</strong> segunda a sexta, das 9h às 18h</span></li>
+            </ul>
+            <div class="info-note mt-4">
+              <i class="bi bi-shield-check me-2" aria-hidden="true"></i>
+              Não solicitamos documentos por esta página. Após o primeiro contato, orientaremos sobre a forma segura de compartilhá-los.
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-7 reveal" data-delay="1">
+            <form id="formAvaliacao" class="form-card needs-validation" novalidate>
+              <div class="row g-3">
+                <div class="col-12 col-md-6">
+                  <label for="nome" class="form-label">Nome completo <span class="text-danger" aria-hidden="true">*</span></label>
+                  <input type="text" class="form-control" id="nome" name="nome" autocomplete="name" required minlength="3">
+                  <div class="invalid-feedback">Informe o seu nome.</div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="telefone" class="form-label">Telefone ou WhatsApp <span class="text-danger" aria-hidden="true">*</span></label>
+                  <input type="tel" class="form-control" id="telefone" name="telefone" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000" required pattern="[\d\s()+-]{10,20}">
+                  <div class="invalid-feedback">Informe um telefone válido com DDD.</div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="email" class="form-label">E-mail <span class="text-danger" aria-hidden="true">*</span></label>
+                  <input type="email" class="form-control" id="email" name="email" inputmode="email" autocomplete="email" required>
+                  <div class="invalid-feedback">Informe um e-mail válido.</div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="cidade" class="form-label">Cidade <span class="text-danger" aria-hidden="true">*</span></label>
+                  <input type="text" class="form-control" id="cidade" name="cidade" autocomplete="address-level2" required>
+                  <div class="invalid-feedback">Informe a sua cidade.</div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="empreendimento" class="form-label">Empreendimento <span class="text-danger" aria-hidden="true">*</span></label>
+                  <input type="text" class="form-control" id="empreendimento" name="empreendimento" required>
+                  <div class="invalid-feedback">Informe o nome do empreendimento.</div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="construtora" class="form-label">Nome da construtora <span class="text-muted fw-normal">(opcional)</span></label>
+                  <input type="text" class="form-control" id="construtora" name="construtora">
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="tipoProblema" class="form-label">Tipo de problema <span class="text-danger" aria-hidden="true">*</span></label>
+                  <select class="form-select" id="tipoProblema" name="tipo_problema" required>
+                    <option value="" selected>Selecione...</option>
+                    <option>Atraso na entrega</option>
+                    <option>Defeitos no imóvel</option>
+                    <option>Cobranças contratuais</option>
+                    <option>Distrato imobiliário</option>
+                    <option>Alteração do projeto</option>
+                    <option>Problemas com documentação</option>
+                    <option>Imóvel diferente do anunciado</option>
+                    <option>Outro</option>
+                  </select>
+                  <div class="invalid-feedback">Selecione o tipo de problema.</div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="dataEntrega" class="form-label">Data prevista para entrega <span class="text-muted fw-normal">(opcional)</span></label>
+                  <input type="date" class="form-control" id="dataEntrega" name="data_entrega">
+                </div>
+                <div class="col-12">
+                  <label for="descricao" class="form-label">Breve descrição da situação <span class="text-danger" aria-hidden="true">*</span></label>
+                  <textarea class="form-control" id="descricao" name="descricao" rows="4" required minlength="20" maxlength="1500" placeholder="Conte, em poucas linhas, o que aconteceu. Não inclua dados sensíveis, como números de documentos."></textarea>
+                  <div class="invalid-feedback">Descreva a situação com pelo menos 20 caracteres.</div>
+                </div>
+                <div class="col-12">
+                  <fieldset>
+                    <legend class="form-label mb-2">Preferência de contato <span class="text-danger" aria-hidden="true">*</span></legend>
+                    <div class="d-flex flex-wrap gap-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="preferencia_contato" id="prefWhatsapp" value="WhatsApp" required>
+                        <label class="form-check-label" for="prefWhatsapp">WhatsApp</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="preferencia_contato" id="prefTelefone" value="Telefone">
+                        <label class="form-check-label" for="prefTelefone">Telefone</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="preferencia_contato" id="prefEmail" value="E-mail">
+                        <label class="form-check-label" for="prefEmail">E-mail</label>
+                        <div class="invalid-feedback">Escolha uma forma de contato.</div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="consentimento" name="consentimento" required>
+                    <label class="form-check-label legal-note" for="consentimento">
+                      Autorizo o tratamento dos meus dados para retorno de contato e avaliação inicial do caso, conforme a <a href="https://gasigliaadvocacia.com/politica-de-privacidade/" target="_blank" rel="noopener">Política de Privacidade</a> e os <a href="#termos-uso">Termos de Uso</a>. <span class="text-danger" aria-hidden="true">*</span>
+                    </label>
+                    <div class="invalid-feedback">É necessário autorizar o tratamento dos dados para enviar o formulário.</div>
+                  </div>
+                </div>
+                <!-- Campo honeypot antispam (invisível para pessoas) -->
+                <div class="d-none" aria-hidden="true">
+                  <label for="website">Não preencha este campo</label>
+                  <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                </div>
+                <div class="col-12 d-grid mt-2">
+                  <button type="submit" class="btn btn-navy btn-lg" id="btnEnviar">
+                    <i class="bi bi-send me-2" aria-hidden="true"></i>Solicitar avaliação inicial
+                  </button>
+                </div>
+                <!-- Área de mensagens de status (acessível) -->
+                <div class="col-12">
+                  <div id="formStatus" role="status" aria-live="polite"></div>
+                </div>
+                <div class="col-12">
+                  <p class="legal-note mb-0">
+                    O envio deste formulário não estabelece automaticamente uma relação profissional com o escritório. As informações serão utilizadas apenas para retorno de contato e avaliação inicial. A orientação depende da análise individual do caso.
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         12. CTA FINAL
+         ============================================================ -->
+    <section class="cta-final" id="cta">
+      <div class="container text-center content-narrow reveal">
+        <h2>Entenda os possíveis caminhos para a sua situação</h2>
+        <p class="lead mt-3 mb-4">Conte brevemente o que aconteceu e solicite uma avaliação inicial do seu caso.</p>
+        <div class="d-grid d-md-flex justify-content-md-center gap-3">
+          <a href="#" class="btn btn-whatsapp btn-lg js-whatsapp" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-2" aria-hidden="true"></i>Falar pelo WhatsApp</a>
+          <a href="#contato" class="btn btn-outline-light-soft btn-lg"><i class="bi bi-pencil-square me-2" aria-hidden="true"></i>Preencher formulário</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       13. RODAPÉ
+       ============================================================ -->
+  <footer class="pt-5">
+    <div class="container">
+      <div class="row g-4 pb-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <a class="navbar-brand mb-3" href="#inicio" aria-label="Gasiglia Advocacia – página inicial">
+            <span class="brand-logo">
+              <img src="https://gasigliaadvocacia.com/wp-content/uploads/2023/01/logo2.1-300x70.png" width="300" height="70" alt="Gasiglia Advocacia" loading="lazy" decoding="async">
+            </span>
+          </a>
+          <p class="mb-2">Orientação jurídica para compradores de imóveis na planta.</p>
+          <p class="mb-0"><i class="bi bi-person-badge me-1" aria-hidden="true"></i>Dr. Eduardo Correa Gasiglia Queiroz — OAB/RJ 199.916</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/eduardogasiglia.adv/" target="_blank" rel="noopener" aria-label="Instagram do escritório"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/gasigliaadvocacia" target="_blank" rel="noopener" aria-label="Facebook do escritório"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/in/eduardo-gasiglia-409a445a/" target="_blank" rel="noopener" aria-label="LinkedIn do advogado"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
+            <a href="https://www.gasigliaadvocacia.com.br/" target="_blank" rel="noopener" aria-label="Site institucional do escritório"><i class="bi bi-globe2" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+          <h4>Contato</h4>
+          <ul>
+            <li><i class="bi bi-telephone me-2" aria-hidden="true"></i><a href="tel:+5521982338233">(21) 98233-8233</a></li>
+            <li><i class="bi bi-whatsapp me-2" aria-hidden="true"></i><a href="#" class="js-whatsapp" target="_blank" rel="noopener">(21) 98233-8233</a></li>
+            <li><i class="bi bi-envelope me-2" aria-hidden="true"></i><a href="mailto:eduardo@gasigliaadvocacia.com.br">eduardo@gasigliaadvocacia.com.br</a></li>
+            <li><i class="bi bi-geo-alt me-2" aria-hidden="true"></i>Av. Rio Branco, 131, sala 1703, Centro, Rio de Janeiro – RJ</li>
+            <li><i class="bi bi-clock me-2" aria-hidden="true"></i>Segunda a sexta, das 9h às 18h</li>
+          </ul>
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#situacoes">Situações atendidas</a></li>
+            <li><a href="#como-funciona">Como funciona</a></li>
+            <li><a href="#sobre">Sobre o escritório</a></li>
+            <li><a href="#faq">Perguntas frequentes</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+          <h4>Informações legais</h4>
+          <ul>
+            <li><a href="https://gasigliaadvocacia.com/politica-de-privacidade/" target="_blank" rel="noopener" id="politica-privacidade">Política de Privacidade</a></li>
+            <!-- O site atual não possui página de Termos de Uso: substitua o "#termos-uso" pela URL quando ela existir -->
+            <li><a href="#termos-uso" id="termos-uso">Termos de Uso</a></li>
+            <li><a href="#aviso-legal">Aviso legal</a></li>
+          </ul>
+          <p class="mt-3 mb-0 small" id="aviso-legal">As informações desta página possuem caráter geral e informativo. A análise jurídica depende das circunstâncias e dos documentos de cada caso.</p>
+        </div>
+      </div>
+      <div class="footer-bottom py-3 d-flex flex-column flex-md-row justify-content-between gap-2">
+        <span>&copy; <span id="anoAtual"></span> Gasiglia Advocacia. Todos os direitos reservados.</span>
+        <span>Publicidade em conformidade com o Código de Ética e Disciplina da OAB.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       BOTÃO FLUTUANTE DE WHATSAPP
+       ============================================================ -->
+  <a href="#" class="whatsapp-float js-whatsapp" target="_blank" rel="noopener" aria-label="Conversar pelo WhatsApp">
+    <i class="bi bi-whatsapp" aria-hidden="true"></i>
+  </a>
+
+  <!-- ============================================================
+       BARRA DE CTA FIXA (somente celular)
+       ============================================================ -->
+  <div class="bottom-bar d-md-none" role="region" aria-label="Ações rápidas">
+    <a href="#contato" class="btn btn-navy"><i class="bi bi-clipboard-check me-1" aria-hidden="true"></i>Avaliar meu caso</a>
+    <a href="#" class="btn btn-whatsapp js-whatsapp" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-1" aria-hidden="true"></i>WhatsApp</a>
+  </div>
+
+  <!-- ============================================================
+       JAVASCRIPT
+       ============================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script>
+    /* ------------------------------------------------------------
+       CONFIGURAÇÃO — edite apenas este bloco
+       ------------------------------------------------------------ */
+    const CONFIG = {
+      // Número do WhatsApp no formato internacional, somente dígitos. Ex.: "5511999999999"
+      WHATSAPP_NUMBER: "5521982338233",
+      WHATSAPP_MESSAGE: "Olá, encontrei o site do escritório e gostaria de receber informações sobre a avaliação de um problema relacionado a um imóvel comprado na planta.",
+      // URL da API, CRM ou serviço de e-mail que receberá o formulário (POST JSON).
+      // Deixe vazio enquanto não houver backend: a página NÃO simulará envio.
+      FORM_ENDPOINT: "",
+      // E-mail exibido como alternativa quando não há endpoint configurado
+      CONTACT_EMAIL: "eduardo@gasigliaadvocacia.com.br"
+    };
+
+    /* Depoimentos: substitua por relatos AUTÊNTICOS e PREVIAMENTE AUTORIZADOS.
+       Enquanto o array estiver vazio, a seção permanece oculta.
+       Exemplo de item: { nome: "Nome do cliente", cidade: "Cidade/UF", texto: "Relato autorizado..." } */
+    const TESTIMONIALS = [];
+
+    /* ------------------------------------------------------------
+       1. Links de WhatsApp
+       ------------------------------------------------------------ */
+    (function setupWhatsapp() {
+      const digits = CONFIG.WHATSAPP_NUMBER.replace(/\D/g, "");
+      const url = "https://wa.me/" + digits + "?text=" + encodeURIComponent(CONFIG.WHATSAPP_MESSAGE);
+      document.querySelectorAll(".js-whatsapp").forEach(function (el) {
+        el.setAttribute("href", url);
+      });
+    })();
+
+    /* ------------------------------------------------------------
+       2. Ano atual no rodapé
+       ------------------------------------------------------------ */
+    document.getElementById("anoAtual").textContent = new Date().getFullYear();
+
+    /* ------------------------------------------------------------
+       3. Animações suaves ao rolar (respeita prefers-reduced-motion)
+       ------------------------------------------------------------ */
+    (function setupReveal() {
+      const items = document.querySelectorAll(".reveal");
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce || !("IntersectionObserver" in window)) {
+        items.forEach(function (el) { el.classList.add("is-visible"); });
+        return;
+      }
+      const io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+      items.forEach(function (el) { io.observe(el); });
+    })();
+
+    /* ------------------------------------------------------------
+       4. Fecha o menu recolhível ao clicar em um link (celular)
+          e destaca o item ativo conforme a rolagem
+       ------------------------------------------------------------ */
+    document.addEventListener("DOMContentLoaded", function () {
+      const menu = document.getElementById("menuPrincipal");
+      const links = menu.querySelectorAll(".nav-link");
+      links.forEach(function (link) {
+        link.addEventListener("click", function () {
+          if (menu.classList.contains("show") && window.bootstrap) {
+            bootstrap.Collapse.getOrCreateInstance(menu).hide();
+          }
+        });
+      });
+
+      // Item ativo conforme a seção visível
+      const sections = Array.from(links).map(function (l) { return document.querySelector(l.getAttribute("href")); }).filter(Boolean);
+      if ("IntersectionObserver" in window) {
+        const spy = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              links.forEach(function (l) { l.classList.toggle("active", l.getAttribute("href") === "#" + entry.target.id); });
+            }
+          });
+        }, { rootMargin: "-40% 0px -55% 0px" });
+        sections.forEach(function (s) { spy.observe(s); });
+      }
+    });
+
+    /* ------------------------------------------------------------
+       5. Depoimentos (renderiza somente se houver relatos reais)
+       ------------------------------------------------------------ */
+    (function renderTestimonials() {
+      const section = document.getElementById("depoimentos");
+      const list = document.getElementById("listaDepoimentos");
+      if (!Array.isArray(TESTIMONIALS) || TESTIMONIALS.length === 0) {
+        section.hidden = true;
+        return;
+      }
+      const esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]; }); };
+      list.innerHTML = TESTIMONIALS.map(function (t) {
+        const inicial = (t.nome || "?").trim().charAt(0).toUpperCase();
+        return '<div class="col-12 col-md-6 col-lg-4 reveal is-visible">' +
+          '<blockquote class="testimonial mb-0">' +
+            '<i class="bi bi-quote" aria-hidden="true"></i>' +
+            '<p class="mb-0">' + esc(t.texto) + '</p>' +
+            '<footer class="testimonial-author">' +
+              '<span class="testimonial-avatar" aria-hidden="true">' + esc(inicial) + '</span>' +
+              '<span><strong class="d-block">' + esc(t.nome) + '</strong><small class="text-muted">' + esc(t.cidade || "") + '</small></span>' +
+            '</footer>' +
+          '</blockquote></div>';
+      }).join("");
+      section.hidden = false;
+    })();
+
+    /* ------------------------------------------------------------
+       6. Formulário: validação visual (Bootstrap) e envio
+       ------------------------------------------------------------ */
+    (function setupForm() {
+      const form = document.getElementById("formAvaliacao");
+      const status = document.getElementById("formStatus");
+      const btn = document.getElementById("btnEnviar");
+
+      function showStatus(type, html) {
+        status.innerHTML = '<div class="alert alert-' + type + ' mb-0" role="alert">' + html + '</div>';
+      }
+
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        status.innerHTML = "";
+
+        // Validação nativa + classes visuais do Bootstrap
+        if (!form.checkValidity()) {
+          form.classList.add("was-validated");
+          const firstInvalid = form.querySelector(":invalid");
+          if (firstInvalid) firstInvalid.focus();
+          showStatus("warning", "Alguns campos precisam de atenção. Revise os itens destacados.");
+          return;
+        }
+
+        // Honeypot antispam: se preenchido, ignora silenciosamente
+        if (form.website.value) return;
+
+        // Sem backend configurado: não simula envio, orienta alternativas
+        if (!CONFIG.FORM_ENDPOINT) {
+          const wa = document.querySelector(".js-whatsapp").getAttribute("href");
+          showStatus("info",
+            "<strong>O envio on-line ainda não está configurado.</strong> " +
+            "Para solicitar a avaliação inicial, fale pelo <a href='" + wa + "' target='_blank' rel='noopener'>WhatsApp</a> " +
+            "ou envie um e-mail para <a href='mailto:" + CONFIG.CONTACT_EMAIL + "'>" + CONFIG.CONTACT_EMAIL + "</a>.");
+          return;
+        }
+
+        // Envio para API / CRM / serviço de e-mail
+        const data = Object.fromEntries(new FormData(form).entries());
+        delete data.website;
+        data.origem = "landing-page-imoveis-na-planta";
+        data.enviado_em = new Date().toISOString();
+
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Enviando...';
+
+        try {
+          const res = await fetch(CONFIG.FORM_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify(data)
+          });
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          form.reset();
+          form.classList.remove("was-validated");
+          showStatus("success", "<strong>Solicitação recebida.</strong> Entraremos em contato pelo canal escolhido para a avaliação inicial do seu caso.");
+        } catch (err) {
+          showStatus("danger", "Não foi possível enviar a solicitação neste momento. Tente novamente ou fale pelo WhatsApp.");
+        } finally {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="bi bi-send me-2" aria-hidden="true"></i>Solicitar avaliação inicial';
+        }
+      });
+
+      // Remove o destaque de erro conforme o campo é corrigido
+      form.querySelectorAll(".form-control, .form-select, .form-check-input").forEach(function (field) {
+        field.addEventListener("input", function () {
+          if (form.classList.contains("was-validated") && field.checkValidity()) {
+            field.classList.remove("is-invalid");
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
