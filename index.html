@@ -11,7 +11,7 @@
   <title>Advocacia para Problemas com Imóveis na Planta | Gasiglia Advocacia</title>
   <meta name="description" content="Orientação jurídica para compradores de imóveis na planta que enfrentam atraso na entrega, defeitos, cobranças, distrato ou problemas contratuais.">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#0B1F3A">
+  <meta name="theme-color" content="#1C1B19">
   <link rel="canonical" href="https://gasigliaadvocacia.com/imobiliario/">
 
   <!-- Open Graph / redes sociais -->
@@ -28,7 +28,7 @@
   <meta name="twitter:image" content="https://gasigliaadvocacia.com/wp-content/uploads/2023/01/logo2.1.png">
 
   <!-- Favicon simples em SVG (substitua por um arquivo real se desejar) -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1F3A'/%3E%3Cpath d='M32 14 12 30h6v20h28V30h6z' fill='%23B89146'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C1B19'/%3E%3Cpath d='M32 14 12 30h6v20h28V30h6z' fill='%23B89146'/%3E%3C/svg%3E">
 
   <!-- ============================================================
        FONTES E BIBLIOTECAS (CDN)
@@ -84,20 +84,20 @@
   <style>
     /* ---------- 1. Variáveis de design ---------- */
     :root {
-      --navy: #0B1F3A;
-      --navy-2: #173B67;
+      --primary: #1C1B19;
+      --primary-2: #2E2C28;
       --gold: #B89146;
       --gold-soft: rgba(184, 145, 70, 0.14);
-      --bg: #F7F8FA;
+      --bg: #F7F5F0;
       --white: #FFFFFF;
-      --text: #1E293B;
-      --muted: #64748B;
-      --border: #E5E9F0;
+      --text: #1F1D1A;
+      --muted: #6B665E;
+      --border: #E6E1D8;
       --radius: 1rem;
       --radius-sm: .75rem;
-      --shadow-sm: 0 1px 2px rgba(11, 31, 58, .04), 0 2px 8px rgba(11, 31, 58, .06);
-      --shadow-md: 0 8px 24px rgba(11, 31, 58, .10);
-      --shadow-lg: 0 20px 48px rgba(11, 31, 58, .16);
+      --shadow-sm: 0 1px 2px rgba(28, 27, 25, .04), 0 2px 8px rgba(28, 27, 25, .06);
+      --shadow-md: 0 8px 24px rgba(28, 27, 25, .10);
+      --shadow-lg: 0 20px 48px rgba(28, 27, 25, .16);
       --bottom-bar-h: 64px;
     }
 
@@ -111,15 +111,15 @@
       overflow-x: hidden;               /* impede rolagem horizontal */
       padding-bottom: var(--bottom-bar-h); /* espaço para a barra fixa no mobile */
     }
-    h1, h2, h3, h4, h5 { font-weight: 700; letter-spacing: -.01em; color: var(--navy); line-height: 1.2; overflow-wrap: anywhere; }
+    h1, h2, h3, h4, h5 { font-weight: 700; letter-spacing: -.01em; color: var(--primary); line-height: 1.2; overflow-wrap: anywhere; }
     h1 { font-size: clamp(1.9rem, 5.5vw, 3.25rem); font-weight: 800; }
     h2 { font-size: clamp(1.55rem, 4vw, 2.35rem); }
     h3 { font-size: 1.15rem; }
     p { color: var(--text); }
     .text-muted { color: var(--muted) !important; }
     img { max-width: 100%; height: auto; }
-    a { color: var(--navy-2); text-underline-offset: 3px; }
-    a:hover { color: var(--navy); }
+    a { color: var(--primary-2); text-underline-offset: 3px; }
+    a:hover { color: var(--primary); }
     section { padding-block: 3.5rem; }
     .section-alt { background: var(--bg); }
     .lead { font-size: 1.05rem; color: var(--muted); }
@@ -132,7 +132,7 @@
     /* Link "pular para o conteúdo" */
     .skip-link {
       position: absolute; left: 1rem; top: -100px; z-index: 2000;
-      background: var(--navy); color: #fff; padding: .6rem 1rem; border-radius: var(--radius-sm);
+      background: var(--primary); color: #fff; padding: .6rem 1rem; border-radius: var(--radius-sm);
     }
     .skip-link:focus { top: 1rem; color: #fff; }
 
@@ -146,29 +146,29 @@
 
     .btn { font-weight: 600; border-radius: .75rem; padding: .8rem 1.35rem; min-height: 48px; transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease; }
     .btn:active { transform: scale(.98); }
-    .btn-navy { background: var(--navy); color: #fff; border: 1px solid var(--navy); }
-    .btn-navy:hover, .btn-navy:focus { background: var(--navy-2); border-color: var(--navy-2); color: #fff; box-shadow: var(--shadow-md); }
+    .btn-graphite { background: var(--primary); color: #fff; border: 1px solid var(--primary); }
+    .btn-graphite:hover, .btn-graphite:focus { background: var(--primary-2); border-color: var(--primary-2); color: #fff; box-shadow: var(--shadow-md); }
     .btn-gold { background: var(--gold); color: #fff; border: 1px solid var(--gold); }
     .btn-gold:hover, .btn-gold:focus { background: #A37E3A; border-color: #A37E3A; color: #fff; box-shadow: var(--shadow-md); }
-    .btn-outline-navy { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
-    .btn-outline-navy:hover, .btn-outline-navy:focus { background: var(--navy); color: #fff; }
+    .btn-outline-graphite { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); }
+    .btn-outline-graphite:hover, .btn-outline-graphite:focus { background: var(--primary); color: #fff; }
     .btn-outline-light-soft { background: rgba(255,255,255,.08); color: #fff; border: 1.5px solid rgba(255,255,255,.55); }
-    .btn-outline-light-soft:hover, .btn-outline-light-soft:focus { background: #fff; color: var(--navy); border-color: #fff; }
+    .btn-outline-light-soft:hover, .btn-outline-light-soft:focus { background: #fff; color: var(--primary); border-color: #fff; }
     .btn-whatsapp { background: #25D366; color: #fff; border: 1px solid #25D366; }
     .btn-whatsapp:hover, .btn-whatsapp:focus { background: #1EBE5A; border-color: #1EBE5A; color: #fff; box-shadow: var(--shadow-md); }
 
     /* ---------- 4. Barra superior ---------- */
-    .topbar { background: var(--navy); color: rgba(255,255,255,.85); font-size: .8rem; }
+    .topbar { background: var(--primary); color: rgba(255,255,255,.85); font-size: .8rem; }
     .topbar a { color: #fff; text-decoration: none; }
     .topbar a:hover { color: var(--gold); }
     .topbar .bi { color: var(--gold); }
 
     /* ---------- 5. Navbar ---------- */
     .navbar { background: rgba(255,255,255,.96); backdrop-filter: saturate(180%) blur(8px); box-shadow: var(--shadow-sm); padding-block: .6rem; }
-    .navbar-brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; color: var(--navy) !important; font-size: 1rem; padding: 0; }
+    .navbar-brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; color: var(--primary) !important; font-size: 1rem; padding: 0; }
     /* O logotipo original tem texto branco e monograma dourado (feito para fundo escuro);
-       na navbar clara ele é exibido sobre uma cápsula azul-marinho. */
-    .brand-logo { display: inline-flex; align-items: center; background: var(--navy); border-radius: 10px; padding: .5rem .8rem; }
+       na navbar clara ele é exibido sobre uma cápsula grafite. */
+    .brand-logo { display: inline-flex; align-items: center; background: var(--primary); border-radius: 10px; padding: .5rem .8rem; }
     .brand-logo img { height: 28px; width: auto; display: block; }
     footer .brand-logo { background: transparent; padding: 0; }
     footer .brand-logo img { height: 40px; }
@@ -177,14 +177,14 @@
       width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center;
       background: rgba(255,255,255,.08); color: #fff; font-size: 1.15rem; transition: background-color .2s ease, color .2s ease;
     }
-    .social-links a:hover, .social-links a:focus { background: var(--gold); color: var(--navy); }
+    .social-links a:hover, .social-links a:focus { background: var(--gold); color: var(--primary); }
     .navbar .nav-link { color: var(--text); font-weight: 500; padding: .6rem .75rem; border-radius: .5rem; }
-    .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--navy); background: var(--bg); }
+    .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--primary); background: var(--bg); }
     .navbar-toggler { border: 1px solid var(--border); padding: .45rem .6rem; min-height: 44px; min-width: 44px; }
     .navbar-toggler:focus { box-shadow: 0 0 0 .2rem rgba(184,145,70,.4); }
 
     /* ---------- 6. Hero ---------- */
-    .hero { background: linear-gradient(180deg, #F7F8FA 0%, #FFFFFF 100%); padding-block: 3rem 3.5rem; position: relative; overflow: hidden; }
+    .hero { background: linear-gradient(180deg, #F7F5F0 0%, #FFFFFF 100%); padding-block: 3rem 3.5rem; position: relative; overflow: hidden; }
     .hero::after {
       content: ""; position: absolute; right: -120px; top: -120px; width: 420px; height: 420px; border-radius: 50%;
       background: radial-gradient(circle, rgba(184,145,70,.16) 0%, rgba(184,145,70,0) 70%); pointer-events: none;
@@ -196,7 +196,7 @@
       box-shadow: var(--shadow-md); padding: .7rem .9rem; display: flex; gap: .65rem; align-items: center; max-width: 85%;
     }
     .hero-badge .bi { color: var(--gold); font-size: 1.4rem; }
-    .hero-badge strong { display: block; font-size: .85rem; color: var(--navy); }
+    .hero-badge strong { display: block; font-size: .85rem; color: var(--primary); }
     .hero-badge span { font-size: .75rem; color: var(--muted); }
     .trust-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .6rem 1.25rem; }
     .trust-list li { display: flex; align-items: center; gap: .45rem; font-size: .9rem; color: var(--muted); }
@@ -212,7 +212,7 @@
       width: 52px; height: 52px; border-radius: 14px; background: var(--gold-soft); color: var(--gold);
       display: grid; place-items: center; font-size: 1.45rem; margin-bottom: 1rem;
     }
-    .icon-box.navy { background: rgba(11,31,58,.07); color: var(--navy); }
+    .icon-box.dark { background: rgba(28,27,25,.07); color: var(--primary); }
     .card-soft p { margin-bottom: 0; color: var(--muted); font-size: .95rem; }
 
     /* ---------- 8. Lista de documentos ---------- */
@@ -226,7 +226,7 @@
     .step { position: relative; background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.5rem 1.5rem 4.5rem; box-shadow: var(--shadow-sm); }
     .step-number {
       position: absolute; left: 1.25rem; top: 1.4rem; width: 40px; height: 40px; border-radius: 50%;
-      background: var(--navy); color: var(--gold); font-weight: 700; display: grid; place-items: center; font-size: 1rem;
+      background: var(--primary); color: var(--gold); font-weight: 700; display: grid; place-items: center; font-size: 1rem;
     }
     .step h3 { font-size: 1.05rem; margin-bottom: .35rem; }
     .step p { margin: 0; color: var(--muted); font-size: .95rem; }
@@ -236,38 +236,38 @@
     .about-facts { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
     .about-facts li { display: flex; gap: .75rem; align-items: flex-start; font-size: .95rem; }
     .about-facts .bi { color: var(--gold); margin-top: .15rem; }
-    .about-facts strong { color: var(--navy); }
+    .about-facts strong { color: var(--primary); }
 
     /* ---------- 11. Depoimentos ---------- */
     .testimonial { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; height: 100%; box-shadow: var(--shadow-sm); }
     .testimonial .bi-quote { color: var(--gold); font-size: 1.8rem; }
     .testimonial-author { display: flex; align-items: center; gap: .75rem; margin-top: 1rem; }
-    .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--navy); color: var(--gold); display: grid; place-items: center; font-weight: 700; }
+    .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--primary); color: var(--gold); display: grid; place-items: center; font-weight: 700; }
 
     /* ---------- 12. FAQ ---------- */
     .accordion-item { border: 1px solid var(--border); border-radius: var(--radius-sm) !important; margin-bottom: .75rem; overflow: hidden; }
-    .accordion-button { font-weight: 600; color: var(--navy); padding: 1.1rem 1.25rem; font-size: .98rem; }
-    .accordion-button:not(.collapsed) { background: var(--gold-soft); color: var(--navy); box-shadow: none; }
+    .accordion-button { font-weight: 600; color: var(--primary); padding: 1.1rem 1.25rem; font-size: .98rem; }
+    .accordion-button:not(.collapsed) { background: var(--gold-soft); color: var(--primary); box-shadow: none; }
     .accordion-button:focus { box-shadow: 0 0 0 .2rem rgba(184,145,70,.35); }
     .accordion-button::after { filter: grayscale(1); }
     .accordion-body { color: var(--muted); font-size: .95rem; }
 
     /* ---------- 13. Formulário ---------- */
     .form-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow-md); }
-    .form-label { font-weight: 600; font-size: .9rem; color: var(--navy); }
-    .form-control, .form-select { border-radius: .7rem; padding: .75rem .9rem; min-height: 48px; border-color: #D5DBE4; }
+    .form-label { font-weight: 600; font-size: .9rem; color: var(--primary); }
+    .form-control, .form-select { border-radius: .7rem; padding: .75rem .9rem; min-height: 48px; border-color: #D9D3C8; }
     .form-control:focus, .form-select:focus { border-color: var(--gold); box-shadow: 0 0 0 .2rem rgba(184,145,70,.25); }
-    .form-check-input:checked { background-color: var(--navy); border-color: var(--navy); }
+    .form-check-input:checked { background-color: var(--primary); border-color: var(--primary); }
     .form-check-input:focus { box-shadow: 0 0 0 .2rem rgba(184,145,70,.25); border-color: var(--gold); }
     .legal-note { font-size: .82rem; color: var(--muted); }
 
     /* ---------- 14. CTA final ---------- */
-    .cta-final { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%); color: #fff; }
+    .cta-final { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%); color: #fff; }
     .cta-final h2 { color: #fff; }
     .cta-final p { color: rgba(255,255,255,.82); }
 
     /* ---------- 15. Rodapé ---------- */
-    footer { background: #08172B; color: rgba(255,255,255,.78); font-size: .92rem; }
+    footer { background: #141311; color: rgba(255,255,255,.78); font-size: .92rem; }
     footer p { color: inherit; }
     footer h4 { color: #fff; font-size: .95rem; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 1rem; }
     footer a { color: rgba(255,255,255,.78); text-decoration: none; }
@@ -288,7 +288,7 @@
 
     .bottom-bar {
       position: fixed; left: 0; right: 0; bottom: 0; z-index: 1030; height: var(--bottom-bar-h);
-      background: rgba(255,255,255,.97); border-top: 1px solid var(--border); box-shadow: 0 -6px 20px rgba(11,31,58,.08);
+      background: rgba(255,255,255,.97); border-top: 1px solid var(--border); box-shadow: 0 -6px 20px rgba(28,27,25,.08);
       display: flex; gap: .5rem; padding: .6rem 1rem; padding-bottom: max(.6rem, env(safe-area-inset-bottom));
     }
     .bottom-bar .btn { flex: 1; padding: .55rem .5rem; min-height: 44px; font-size: .9rem; }
@@ -391,8 +391,8 @@
             <p class="lead mt-3 mb-4">Receba orientação jurídica para compreender seus direitos e avaliar os caminhos possíveis para o seu caso.</p>
             <p class="mb-4">Atraso na entrega, cobranças, defeitos, distrato ou alterações no projeto: cada situação é diferente e merece uma análise cuidadosa do contrato e dos documentos.</p>
             <div class="d-grid d-md-flex gap-3 mb-4">
-              <a href="#contato" class="btn btn-navy btn-lg"><i class="bi bi-clipboard-check me-2" aria-hidden="true"></i>Quero avaliar meu caso</a>
-              <a href="#" class="btn btn-outline-navy btn-lg js-whatsapp" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-2" aria-hidden="true"></i>Falar pelo WhatsApp</a>
+              <a href="#contato" class="btn btn-graphite btn-lg"><i class="bi bi-clipboard-check me-2" aria-hidden="true"></i>Quero avaliar meu caso</a>
+              <a href="#" class="btn btn-outline-graphite btn-lg js-whatsapp" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-2" aria-hidden="true"></i>Falar pelo WhatsApp</a>
             </div>
             <ul class="trust-list">
               <li><i class="bi bi-person-check" aria-hidden="true"></i>Atendimento individualizado</li>
@@ -406,7 +406,7 @@
               <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=75"
                    width="900" height="720" alt="Chaves de um imóvel residencial sendo entregues sobre um contrato"
                    fetchpriority="high" decoding="async"
-                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 900 720%22%3E%3Crect width=%22900%22 height=%22720%22 fill=%22%23173B67%22/%3E%3Cpath d=%22M450 200 260 360h50v180h280V360h50z%22 fill=%22%23B89146%22/%3E%3C/svg%3E'">
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 900 720%22%3E%3Crect width=%22900%22 height=%22720%22 fill=%22%232E2C28%22/%3E%3Cpath d=%22M450 200 260 360h50v180h280V360h50z%22 fill=%22%23B89146%22/%3E%3C/svg%3E'">
               <div class="hero-badge">
                 <i class="bi bi-chat-square-text" aria-hidden="true"></i>
                 <div>
@@ -475,7 +475,7 @@
           </div>
         </div>
         <div class="text-center mt-5 reveal">
-          <a href="#contato" class="btn btn-navy btn-lg">Conversar sobre minha situação</a>
+          <a href="#contato" class="btn btn-graphite btn-lg">Conversar sobre minha situação</a>
         </div>
       </div>
     </section>
@@ -564,7 +564,7 @@
               <!-- Foto oficial do advogado, publicada em gasigliaadvocacia.com -->
               <img src="https://gasigliaadvocacia.com/wp-content/uploads/2023/01/63a21a489ccb5-e1760965028510.jpeg"
                    width="530" height="650" alt="Dr. Eduardo Correa Gasiglia Queiroz, advogado responsável pelo escritório" loading="lazy" decoding="async"
-                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 640 800%22%3E%3Crect width=%22640%22 height=%22800%22 fill=%22%230B1F3A%22/%3E%3Ccircle cx=%22320%22 cy=%22320%22 r=%22110%22 fill=%22%23B89146%22/%3E%3Cpath d=%22M120 700c20-140 110-210 200-210s180 70 200 210z%22 fill=%22%23B89146%22/%3E%3C/svg%3E'">
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 640 800%22%3E%3Crect width=%22640%22 height=%22800%22 fill=%22%231C1B19%22/%3E%3Ccircle cx=%22320%22 cy=%22320%22 r=%22110%22 fill=%22%23B89146%22/%3E%3Cpath d=%22M120 700c20-140 110-210 200-210s180 70 200 210z%22 fill=%22%23B89146%22/%3E%3C/svg%3E'">
             </div>
           </div>
           <div class="col-12 col-md-7 col-lg-7 reveal" data-delay="1">
@@ -581,8 +581,8 @@
               <li><i class="bi bi-envelope" aria-hidden="true"></i><span><strong>E-mail:</strong> <a href="mailto:eduardo@gasigliaadvocacia.com.br">eduardo@gasigliaadvocacia.com.br</a></span></li>
             </ul>
             <div class="d-grid d-md-flex gap-3 mt-4">
-              <a href="#contato" class="btn btn-navy">Agendar uma conversa</a>
-              <a href="#" class="btn btn-outline-navy js-whatsapp" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-2" aria-hidden="true"></i>Falar pelo WhatsApp</a>
+              <a href="#contato" class="btn btn-graphite">Agendar uma conversa</a>
+              <a href="#" class="btn btn-outline-graphite js-whatsapp" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-2" aria-hidden="true"></i>Falar pelo WhatsApp</a>
             </div>
           </div>
         </div>
@@ -602,42 +602,42 @@
         <div class="row g-4">
           <div class="col-12 col-md-6 col-lg-4 reveal">
             <article class="card-soft">
-              <div class="icon-box navy"><i class="bi bi-person-heart" aria-hidden="true"></i></div>
+              <div class="icon-box dark"><i class="bi bi-person-heart" aria-hidden="true"></i></div>
               <h3>Atendimento individualizado</h3>
               <p>Cada caso é analisado a partir do seu próprio contrato, histórico e documentos.</p>
             </article>
           </div>
           <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="1">
             <article class="card-soft">
-              <div class="icon-box navy"><i class="bi bi-chat-left-text" aria-hidden="true"></i></div>
+              <div class="icon-box dark"><i class="bi bi-chat-left-text" aria-hidden="true"></i></div>
               <h3>Linguagem clara</h3>
               <p>Explicamos os termos e as etapas de forma compreensível, sem excesso de jargão jurídico.</p>
             </article>
           </div>
           <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="2">
             <article class="card-soft">
-              <div class="icon-box navy"><i class="bi bi-search" aria-hidden="true"></i></div>
+              <div class="icon-box dark"><i class="bi bi-search" aria-hidden="true"></i></div>
               <h3>Análise documental cuidadosa</h3>
               <p>Contrato, comprovantes e comunicações são examinados com atenção aos detalhes relevantes.</p>
             </article>
           </div>
           <div class="col-12 col-md-6 col-lg-4 reveal">
             <article class="card-soft">
-              <div class="icon-box navy"><i class="bi bi-eye" aria-hidden="true"></i></div>
+              <div class="icon-box dark"><i class="bi bi-eye" aria-hidden="true"></i></div>
               <h3>Comunicação transparente</h3>
               <p>Você é informado sobre as possibilidades, as limitações e o andamento de cada etapa.</p>
             </article>
           </div>
           <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="1">
             <article class="card-soft">
-              <div class="icon-box navy"><i class="bi bi-buildings" aria-hidden="true"></i></div>
+              <div class="icon-box dark"><i class="bi bi-buildings" aria-hidden="true"></i></div>
               <h3>Atuação focada em Direito Imobiliário</h3>
               <p>Dedicação a questões de compra, contratos e entrega de imóveis.</p>
             </article>
           </div>
           <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="2">
             <article class="card-soft">
-              <div class="icon-box navy"><i class="bi bi-camera-video" aria-hidden="true"></i></div>
+              <div class="icon-box dark"><i class="bi bi-camera-video" aria-hidden="true"></i></div>
               <h3>Atendimento presencial e on-line</h3>
               <p>Reuniões no escritório ou por videochamada, conforme a sua preferência e disponibilidade.</p>
             </article>
@@ -859,7 +859,7 @@
                   <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
                 </div>
                 <div class="col-12 d-grid mt-2">
-                  <button type="submit" class="btn btn-navy btn-lg" id="btnEnviar">
+                  <button type="submit" class="btn btn-graphite btn-lg" id="btnEnviar">
                     <i class="bi bi-send me-2" aria-hidden="true"></i>Solicitar avaliação inicial
                   </button>
                 </div>
@@ -966,7 +966,7 @@
        BARRA DE CTA FIXA (somente celular)
        ============================================================ -->
   <div class="bottom-bar d-md-none" role="region" aria-label="Ações rápidas">
-    <a href="#contato" class="btn btn-navy"><i class="bi bi-clipboard-check me-1" aria-hidden="true"></i>Avaliar meu caso</a>
+    <a href="#contato" class="btn btn-graphite"><i class="bi bi-clipboard-check me-1" aria-hidden="true"></i>Avaliar meu caso</a>
     <a href="#" class="btn btn-whatsapp js-whatsapp" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-1" aria-hidden="true"></i>WhatsApp</a>
   </div>
 
