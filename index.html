@@ -244,7 +244,35 @@
     .testimonial-author { display: flex; align-items: center; gap: .75rem; margin-top: 1rem; }
     .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--primary); color: var(--gold); display: grid; place-items: center; font-weight: 700; }
 
-    /* ---------- 12. FAQ ---------- */
+    /* ---------- 12. Vídeos (formato vertical, 9:16) ---------- */
+    .video-frame {
+      position: relative; width: 100%; max-width: 300px; margin-inline: auto;
+      aspect-ratio: 9 / 16; border-radius: var(--radius); overflow: hidden;
+      background: var(--primary); box-shadow: var(--shadow-md);
+    }
+    .video-frame img, .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .video-frame img { object-fit: cover; }
+    .video-frame iframe { border: 0; }
+    .video-play {
+      position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; cursor: pointer;
+      display: grid; place-items: center;
+      background: linear-gradient(180deg, rgba(28,27,25,.10) 0%, rgba(28,27,25,.45) 100%);
+    }
+    .video-play-icon {
+      width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,.94); color: var(--primary);
+      display: grid; place-items: center; font-size: 2rem; padding-left: .18rem; box-shadow: var(--shadow-md);
+      transition: transform .18s ease, background-color .18s ease, color .18s ease;
+    }
+    .video-play:hover .video-play-icon,
+    .video-play:focus-visible .video-play-icon { transform: scale(1.08); background: var(--gold); color: #fff; }
+    .video-play:active .video-play-icon { transform: scale(.96); }
+    .video-tag {
+      display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--gold); background: var(--gold-soft); border-radius: 999px; padding: .3rem .75rem; margin-bottom: .6rem;
+    }
+    .video-title { font-size: 1rem; line-height: 1.45; margin: 0; }
+
+    /* ---------- 13. FAQ ---------- */
     .accordion-item { border: 1px solid var(--border); border-radius: var(--radius-sm) !important; margin-bottom: .75rem; overflow: hidden; }
     .accordion-button { font-weight: 600; color: var(--primary); padding: 1.1rem 1.25rem; font-size: .98rem; }
     .accordion-button:not(.collapsed) { background: var(--gold-soft); color: var(--primary); box-shadow: none; }
@@ -252,7 +280,7 @@
     .accordion-button::after { filter: grayscale(1); }
     .accordion-body { color: var(--muted); font-size: .95rem; }
 
-    /* ---------- 13. Formulário ---------- */
+    /* ---------- 14. Formulário ---------- */
     .form-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow-md); }
     .form-label { font-weight: 600; font-size: .9rem; color: var(--primary); }
     .form-control, .form-select { border-radius: .7rem; padding: .75rem .9rem; min-height: 48px; border-color: #D9D3C8; }
@@ -261,12 +289,12 @@
     .form-check-input:focus { box-shadow: 0 0 0 .2rem rgba(184,145,70,.25); border-color: var(--gold); }
     .legal-note { font-size: .82rem; color: var(--muted); }
 
-    /* ---------- 14. CTA final ---------- */
+    /* ---------- 15. CTA final ---------- */
     .cta-final { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%); color: #fff; }
     .cta-final h2 { color: #fff; }
     .cta-final p { color: rgba(255,255,255,.82); }
 
-    /* ---------- 15. Rodapé ---------- */
+    /* ---------- 16. Rodapé ---------- */
     footer { background: #141311; color: rgba(255,255,255,.78); font-size: .92rem; }
     footer p { color: inherit; }
     footer h4 { color: #fff; font-size: .95rem; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 1rem; }
@@ -276,7 +304,7 @@
     footer .bi { color: var(--gold); }
     .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); font-size: .8rem; color: rgba(255,255,255,.55); }
 
-    /* ---------- 16. WhatsApp flutuante e barra fixa (mobile) ---------- */
+    /* ---------- 17. WhatsApp flutuante e barra fixa (mobile) ---------- */
     .whatsapp-float {
       position: fixed; right: 1rem; bottom: calc(var(--bottom-bar-h) + 1rem); z-index: 1040;
       width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: #fff;
@@ -293,7 +321,7 @@
     }
     .bottom-bar .btn { flex: 1; padding: .55rem .5rem; min-height: 44px; font-size: .9rem; }
 
-    /* ---------- 17. Animações ao rolar ---------- */
+    /* ---------- 18. Animações ao rolar ---------- */
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.is-visible { opacity: 1; transform: none; }
     .reveal[data-delay="1"] { transition-delay: .1s; }
@@ -306,7 +334,7 @@
       *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
     }
 
-    /* ---------- 18. Ajustes para tablets e desktop ---------- */
+    /* ---------- 19. Ajustes para tablets e desktop ---------- */
     @media (min-width: 768px) {
       section { padding-block: 5rem; }
       .hero { padding-block: 4.5rem 5rem; }
@@ -366,6 +394,7 @@
             <li class="nav-item"><a class="nav-link" href="#situacoes">Situações atendidas</a></li>
             <li class="nav-item"><a class="nav-link" href="#como-funciona">Como funciona</a></li>
             <li class="nav-item"><a class="nav-link" href="#sobre">Sobre o escritório</a></li>
+            <li class="nav-item"><a class="nav-link" href="#videos">Vídeos</a></li>
             <li class="nav-item"><a class="nav-link" href="#faq">Perguntas frequentes</a></li>
             <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
           </ul>
@@ -384,7 +413,7 @@
          ============================================================ -->
     <section class="hero" id="inicio">
       <div class="container">
-        <div class="row align-items-center g-4 g-lg-5">
+        <div class="row align-items-center g-4 g-xl-5">
           <div class="col-12 col-lg-6 reveal">
             <span class="eyebrow">Direito Imobiliário</span>
             <h1>Problemas com um imóvel comprado na planta?</h1>
@@ -485,7 +514,7 @@
          ============================================================ -->
     <section id="atraso">
       <div class="container">
-        <div class="row g-4 g-lg-5 align-items-start">
+        <div class="row g-4 g-xl-5 align-items-start">
           <div class="col-12 col-lg-6 reveal">
             <span class="eyebrow">Atraso na entrega</span>
             <h2>Cada contrato e cada situação precisam ser analisados individualmente</h2>
@@ -558,7 +587,7 @@
          ============================================================ -->
     <section id="sobre">
       <div class="container">
-        <div class="row g-4 g-lg-5 align-items-center">
+        <div class="row g-4 g-xl-5 align-items-center">
           <div class="col-12 col-md-5 col-lg-5 reveal">
             <div class="about-figure">
               <!-- Foto oficial do advogado, publicada em gasigliaadvocacia.com -->
@@ -647,7 +676,93 @@
     </section>
 
     <!-- ============================================================
-         9. DEPOIMENTOS (opcional)
+         9. VÍDEOS DO ADVOGADO
+         Reprodução sob demanda: a miniatura é apenas uma imagem e o
+         player do YouTube só é carregado após o clique, preservando o
+         desempenho da página.
+         Para trocar um vídeo, altere o data-id do botão, o src da
+         miniatura (https://i.ytimg.com/vi/<ID>/oardefault.jpg),
+         o texto alternativo, a etiqueta e o título.
+         ============================================================ -->
+    <section id="videos">
+      <div class="container">
+        <div class="text-center content-narrow mx-auto mb-5 reveal">
+          <span class="eyebrow">Vídeos</span>
+          <h2>O advogado explica</h2>
+          <p class="lead mt-3">Dr. Eduardo Correa Gasiglia Queiroz comenta questões práticas de Direito Imobiliário e Condominial. Os vídeos têm caráter informativo e não substituem a análise individual do seu caso.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+
+          <!-- Vídeo 1 -->
+          <div class="col-12 col-md-6 col-lg-4 reveal">
+            <article class="text-center">
+              <div class="video-frame">
+                <img src="https://i.ytimg.com/vi/-K35yHq6hrs/oardefault.jpg" width="1080" height="1920"
+                     alt="O advogado fala sobre o atraso na entrega das chaves pela construtora" loading="lazy" decoding="async">
+                <button type="button" class="video-play js-video" data-id="-K35yHq6hrs"
+                        data-title="Comprou um imóvel na planta e a construtora atrasou a entrega das chaves?"
+                        aria-label="Assistir ao vídeo sobre atraso na entrega das chaves">
+                  <span class="video-play-icon" aria-hidden="true"><i class="bi bi-play-fill"></i></span>
+                </button>
+              </div>
+              <div class="mt-3">
+                <span class="video-tag">Imóvel na planta</span>
+                <h3 class="video-title">Comprou um imóvel na planta e a construtora atrasou a entrega das chaves? Saiba seus direitos.</h3>
+              </div>
+            </article>
+          </div>
+
+          <!-- Vídeo 2 -->
+          <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="1">
+            <article class="text-center">
+              <div class="video-frame">
+                <img src="https://i.ytimg.com/vi/2xwx_Ahwj2s/oardefault.jpg" width="720" height="1280"
+                     alt="O advogado fala sobre as primeiras declarações no inventário" loading="lazy" decoding="async">
+                <button type="button" class="video-play js-video" data-id="2xwx_Ahwj2s"
+                        data-title="Primeiras declarações no inventário"
+                        aria-label="Assistir ao vídeo sobre as primeiras declarações no inventário">
+                  <span class="video-play-icon" aria-hidden="true"><i class="bi bi-play-fill"></i></span>
+                </button>
+              </div>
+              <div class="mt-3">
+                <span class="video-tag">Inventário</span>
+                <h3 class="video-title">Primeiras declarações no inventário</h3>
+              </div>
+            </article>
+          </div>
+
+          <!-- Vídeo 3 -->
+          <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="2">
+            <article class="text-center">
+              <div class="video-frame">
+                <img src="https://i.ytimg.com/vi/6YxznqgNAMU/oardefault.jpg" width="720" height="1280"
+                     alt="O advogado fala sobre os limites de atuação do síndico e a convenção do condomínio" loading="lazy" decoding="async">
+                <button type="button" class="video-play js-video" data-id="6YxznqgNAMU"
+                        data-title="Síndico não é dono do prédio. Síndico cumpre a convenção."
+                        aria-label="Assistir ao vídeo sobre os limites de atuação do síndico">
+                  <span class="video-play-icon" aria-hidden="true"><i class="bi bi-play-fill"></i></span>
+                </button>
+              </div>
+              <div class="mt-3">
+                <span class="video-tag">Condomínio</span>
+                <h3 class="video-title">Síndico não é dono do prédio. Síndico cumpre a convenção.</h3>
+              </div>
+            </article>
+          </div>
+
+        </div>
+
+        <div class="text-center mt-5 reveal">
+          <a href="https://www.youtube.com/@EduardoGasiglia-fu4od" class="btn btn-outline-graphite" target="_blank" rel="noopener">
+            <i class="bi bi-youtube me-2" aria-hidden="true"></i>Ver mais vídeos no canal
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         10. DEPOIMENTOS (opcional)
          ATENÇÃO: substitua por relatos AUTÊNTICOS e PREVIAMENTE AUTORIZADOS
          pelos clientes. Enquanto o array TESTIMONIALS (no script) estiver
          vazio, esta seção fica oculta automaticamente.
@@ -664,7 +779,7 @@
     </section>
 
     <!-- ============================================================
-         10. PERGUNTAS FREQUENTES
+         11. PERGUNTAS FREQUENTES
          ============================================================ -->
     <section class="section-alt" id="faq">
       <div class="container">
@@ -743,14 +858,14 @@
     </section>
 
     <!-- ============================================================
-         11. FORMULÁRIO DE CONTATO
+         12. FORMULÁRIO DE CONTATO
          Integração: defina CONFIG.FORM_ENDPOINT no script para enviar os
          dados a uma API, CRM ou serviço de e-mail. Sem endpoint, a página
          não simula envio e orienta o visitante a usar WhatsApp ou e-mail.
          ============================================================ -->
     <section id="contato">
       <div class="container">
-        <div class="row g-4 g-lg-5 justify-content-center">
+        <div class="row g-4 g-xl-5 justify-content-center">
           <div class="col-12 col-lg-5 reveal">
             <span class="eyebrow">Contato</span>
             <h2>Solicite uma avaliação inicial do seu caso</h2>
@@ -880,7 +995,7 @@
     </section>
 
     <!-- ============================================================
-         12. CTA FINAL
+         13. CTA FINAL
          ============================================================ -->
     <section class="cta-final" id="cta">
       <div class="container text-center content-narrow reveal">
@@ -896,7 +1011,7 @@
   </main>
 
   <!-- ============================================================
-       13. RODAPÉ
+       14. RODAPÉ
        ============================================================ -->
   <footer class="pt-5">
     <div class="container">
@@ -933,6 +1048,7 @@
             <li><a href="#situacoes">Situações atendidas</a></li>
             <li><a href="#como-funciona">Como funciona</a></li>
             <li><a href="#sobre">Sobre o escritório</a></li>
+            <li><a href="#videos">Vídeos</a></li>
             <li><a href="#faq">Perguntas frequentes</a></li>
             <li><a href="#contato">Contato</a></li>
           </ul>
@@ -1087,7 +1203,26 @@
     })();
 
     /* ------------------------------------------------------------
-       6. Formulário: validação visual (Bootstrap) e envio
+       6. Vídeos: o player do YouTube só é carregado após o clique,
+          para não pesar no carregamento inicial da página
+       ------------------------------------------------------------ */
+    (function setupVideos() {
+      document.querySelectorAll(".js-video").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const frame = btn.closest(".video-frame");
+          const iframe = document.createElement("iframe");
+          iframe.src = "https://www.youtube-nocookie.com/embed/" + btn.dataset.id +
+                       "?autoplay=1&rel=0&playsinline=1&modestbranding=1";
+          iframe.title = btn.dataset.title || "Vídeo do escritório";
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+          iframe.allowFullscreen = true;
+          frame.replaceChildren(iframe);
+        });
+      });
+    })();
+
+    /* ------------------------------------------------------------
+       7. Formulário: validação visual (Bootstrap) e envio
        ------------------------------------------------------------ */
     (function setupForm() {
       const form = document.getElementById("formAvaliacao");
