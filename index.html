@@ -238,6 +238,19 @@
     .about-facts .bi { color: var(--gold); margin-top: .15rem; }
     .about-facts strong { color: var(--primary); }
 
+    /* Painel escuro com a foto da equipe (seção "Por que escolher") */
+    .team-panel { background: var(--primary); color: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); }
+    .team-panel-photo { position: relative; aspect-ratio: 4 / 3; }
+    .team-panel-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+    .team-panel-body { padding: 2rem 1.5rem; }
+    .team-panel h3 { color: #fff; font-size: clamp(1.3rem, 3vw, 1.75rem); margin-bottom: .75rem; }
+    .team-panel p { color: rgba(255,255,255,.82); margin-bottom: 0; }
+    @media (min-width: 768px) { .team-panel-body { padding: 2.5rem; } }
+    @media (min-width: 992px) {
+      .team-panel-photo { aspect-ratio: auto; height: 100%; min-height: 380px; }
+      .team-panel-body { padding: 3rem; }
+    }
+
     /* ---------- 11. Depoimentos ---------- */
     .testimonial { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; height: 100%; box-shadow: var(--shadow-sm); }
     .testimonial .bi-quote { color: var(--gold); font-size: 1.8rem; }
@@ -619,57 +632,69 @@
     </section>
 
     <!-- ============================================================
-         8. DIFERENCIAIS DO ATENDIMENTO
+         8. POR QUE ESCOLHER A GASIGLIA ADVOCACIA
+         Quatro diferenciais em cards e um painel com a foto oficial da
+         equipe (imagem publicada em gasigliaadvocacia.com).
          ============================================================ -->
     <section class="section-alt" id="diferenciais">
       <div class="container">
         <div class="text-center content-narrow mx-auto mb-5 reveal">
-          <span class="eyebrow">Diferenciais</span>
-          <h2>Como conduzimos o atendimento</h2>
-          <p class="lead mt-3">Compromissos objetivos com quem procura o escritório.</p>
+          <span class="eyebrow">Nossos diferenciais</span>
+          <h2>Por que escolher a Gasiglia Advocacia?</h2>
+          <p class="lead mt-3">Compromissos objetivos com quem procura o escritório por um problema com imóvel comprado na planta.</p>
         </div>
-        <div class="row g-4">
-          <div class="col-12 col-md-6 col-lg-4 reveal">
+
+        <div class="row g-4 mb-4 mb-lg-5">
+          <div class="col-12 col-md-6 reveal">
+            <article class="card-soft">
+              <div class="icon-box dark"><i class="bi bi-buildings" aria-hidden="true"></i></div>
+              <h3>Especialização em Direito Imobiliário</h3>
+              <p>Atuação focada em contratos de compra e venda, imóveis na planta e na relação entre comprador e construtora.</p>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 reveal" data-delay="1">
             <article class="card-soft">
               <div class="icon-box dark"><i class="bi bi-person-heart" aria-hidden="true"></i></div>
-              <h3>Atendimento individualizado</h3>
-              <p>Cada caso é analisado a partir do seu próprio contrato, histórico e documentos.</p>
+              <h3>Atendimento humanizado e linguagem clara</h3>
+              <p>Ouvimos a sua história e explicamos cada etapa de forma compreensível, sem excesso de jargão jurídico.</p>
             </article>
           </div>
-          <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="1">
-            <article class="card-soft">
-              <div class="icon-box dark"><i class="bi bi-chat-left-text" aria-hidden="true"></i></div>
-              <h3>Linguagem clara</h3>
-              <p>Explicamos os termos e as etapas de forma compreensível, sem excesso de jargão jurídico.</p>
-            </article>
-          </div>
-          <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="2">
+          <div class="col-12 col-md-6 reveal">
             <article class="card-soft">
               <div class="icon-box dark"><i class="bi bi-search" aria-hidden="true"></i></div>
               <h3>Análise documental cuidadosa</h3>
-              <p>Contrato, comprovantes e comunicações são examinados com atenção aos detalhes relevantes.</p>
+              <p>Contrato, comprovantes, comunicados e materiais de divulgação são examinados com atenção aos detalhes do seu caso.</p>
             </article>
           </div>
-          <div class="col-12 col-md-6 col-lg-4 reveal">
+          <div class="col-12 col-md-6 reveal" data-delay="1">
             <article class="card-soft">
-              <div class="icon-box dark"><i class="bi bi-eye" aria-hidden="true"></i></div>
-              <h3>Comunicação transparente</h3>
-              <p>Você é informado sobre as possibilidades, as limitações e o andamento de cada etapa.</p>
+              <div class="icon-box dark"><i class="bi bi-laptop" aria-hidden="true"></i></div>
+              <h3>Tecnologia e transparência no acompanhamento</h3>
+              <p>Organização digital do caso e comunicação rastreável, com atendimento presencial ou on-line, para que você saiba em que etapa a sua demanda está.</p>
             </article>
           </div>
-          <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="1">
-            <article class="card-soft">
-              <div class="icon-box dark"><i class="bi bi-buildings" aria-hidden="true"></i></div>
-              <h3>Atuação focada em Direito Imobiliário</h3>
-              <p>Dedicação a questões de compra, contratos e entrega de imóveis.</p>
-            </article>
-          </div>
-          <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="2">
-            <article class="card-soft">
-              <div class="icon-box dark"><i class="bi bi-camera-video" aria-hidden="true"></i></div>
-              <h3>Atendimento presencial e on-line</h3>
-              <p>Reuniões no escritório ou por videochamada, conforme a sua preferência e disponibilidade.</p>
-            </article>
+        </div>
+
+        <!-- Painel com a foto da equipe -->
+        <div class="team-panel reveal">
+          <div class="row g-0 align-items-stretch">
+            <div class="col-12 col-lg-5">
+              <div class="team-panel-photo">
+                <img src="https://gasigliaadvocacia.com/wp-content/uploads/2025/10/IMG_9602-768x1024.jpg" width="768" height="1024"
+                     alt="Equipe da Gasiglia Advocacia reunida no escritório, vestindo camisetas pretas com o logotipo" loading="lazy" decoding="async">
+              </div>
+            </div>
+            <div class="col-12 col-lg-7">
+              <div class="team-panel-body">
+                <span class="eyebrow">Nossa equipe</span>
+                <h3>Uma equipe para acompanhar o seu caso do início ao fim</h3>
+                <p>Conte o que aconteceu com o seu imóvel e receba uma avaliação inicial da situação. O atendimento é conduzido pela equipe do escritório, com comunicação direta em cada etapa e sem promessas de resultado.</p>
+                <div class="d-grid d-md-flex gap-3 mt-4">
+                  <a href="#" class="btn btn-whatsapp js-whatsapp" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-2" aria-hidden="true"></i>Falar pelo WhatsApp</a>
+                  <a href="#contato" class="btn btn-outline-light-soft"><i class="bi bi-pencil-square me-2" aria-hidden="true"></i>Preencher formulário</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
