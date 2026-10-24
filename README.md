@@ -38,3 +38,8 @@ Para trocar um vídeo, edite no bloco correspondente:
 - Confirmar o horário de atendimento (rodapé, seção de contato e Schema.org).
 - Substituir o link de Termos de Uso quando a página existir.
 - Opcional: trocar a imagem ilustrativa do hero por uma foto própria.
+
+## Deploy na VPS
+
+O site é estático e **não ocupa porta** — ver [`docs/DEPLOY.md`](docs/DEPLOY.md)
+e o registro de portas em `../infra/PORTAS.md`.
