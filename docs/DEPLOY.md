@@ -35,13 +35,26 @@ da tabela, nunca a faixa `30xx` dos projetos Next.
 ao mesmo tempo: o registro `A` leva o visitante à VPS e os `MX` levam o e-mail à
 Hostinger. Não é preciso trocar os servidores de DNS.
 
-O IP sai com `curl -4 ifconfig.me`, rodado na VPS.
+### O IP da VPS
+
+**`2.25.116.130`** — é o valor que vai no registro `A`.
+
+Veio de `curl -4 ifconfig.me` rodado na VPS (`srv1924518`), e foi conferido:
+o endereço responde com `nginx/1.24.0 (Ubuntu)` e já atende
+`ultradistancia.com.br` e `backhand.com.br`, os dois projetos que moram lá.
+
+```bash
+curl -sI -H "Host: ultradistancia.com.br" http://2.25.116.130/   # 301 para https
+```
+
+Se a VPS for trocada ou recriada, o IP muda: rode `curl -4 ifconfig.me` nela de
+novo e atualize esta linha junto com o registro `A`.
 
 ### Alterar
 
 | Tipo | Nome | Hoje | Passa a ser |
 | --- | --- | --- | --- |
-| `A` | `@` | `89.117.7.39` (hospedagem compartilhada) | IP v4 da VPS |
+| `A` | `@` | `89.117.7.39` (hospedagem compartilhada) | **`2.25.116.130`** |
 | `AAAA` | `@` | `2a02:4780:13:983:0:382c:4065:2` (Hostinger) | IPv6 da VPS, **ou apagar** |
 
 **O `AAAA` é a pegadinha deste caso.** Se ele continuar apontando para a
@@ -87,8 +100,8 @@ O `A` tem TTL de 1800 segundos, então a troca leva até meia hora. Confira de
 qualquer máquina:
 
 ```bash
-nslookup gasigliaadvocacia.com.br        # tem de responder o IP da VPS
-nslookup www.gasigliaadvocacia.com.br    # idem
+nslookup gasigliaadvocacia.com.br            # tem de responder 2.25.116.130
+nslookup www.gasigliaadvocacia.com.br        # idem
 nslookup -type=MX gasigliaadvocacia.com.br   # tem de continuar mx1/mx2.hostinger.com
 ```
 
