@@ -37,36 +37,48 @@ Hostinger. Não é preciso trocar os servidores de DNS.
 
 ### O IP da VPS
 
-**`2.25.116.130`** — é o valor que vai no registro `A`.
+A VPS (`srv1924518`) atende pelos dois protocolos:
 
-Veio de `curl -4 ifconfig.me` rodado na VPS (`srv1924518`), e foi conferido:
-o endereço responde com `nginx/1.24.0 (Ubuntu)` e já atende
+| | Endereço | Vai no registro |
+| --- | --- | --- |
+| IPv4 | `2.25.116.130` | `A` |
+| IPv6 | `2a02:4780:95:faa9::1` | `AAAA` |
+
+Os dois saíram de `curl -4 ifconfig.me` e `curl -6 ifconfig.me` rodados na VPS.
+O IPv4 foi conferido de fora: responde com `nginx/1.24.0 (Ubuntu)` e já atende
 `ultradistancia.com.br` e `backhand.com.br`, os dois projetos que moram lá.
 
 ```bash
 curl -sI -H "Host: ultradistancia.com.br" http://2.25.116.130/   # 301 para https
 ```
 
-Se a VPS for trocada ou recriada, o IP muda: rode `curl -4 ifconfig.me` nela de
-novo e atualize esta linha junto com o registro `A`.
+O nginx já escuta nos dois protocolos: os blocos de
+[`deploy/nginx-imobiliario.conf`](../deploy/nginx-imobiliario.conf) trazem
+`listen 80` e `listen [::]:80`.
+
+Se a VPS for trocada ou recriada, os dois endereços mudam: rode os dois comandos
+nela de novo e atualize esta tabela junto com os registros.
 
 ### Alterar
 
 | Tipo | Nome | Hoje | Passa a ser |
 | --- | --- | --- | --- |
 | `A` | `@` | `89.117.7.39` (hospedagem compartilhada) | **`2.25.116.130`** |
-| `AAAA` | `@` | `2a02:4780:13:983:0:382c:4065:2` (Hostinger) | IPv6 da VPS, **ou apagar** |
+| `AAAA` | `@` | `2a02:4780:13:983:0:382c:4065:2` (Hostinger) | **`2a02:4780:95:faa9::1`** |
 
-**O `AAAA` é a pegadinha deste caso.** Se ele continuar apontando para a
-Hostinger, quem tem IPv6 — a maioria das operadoras móveis — continua caindo no
-redirecionamento antigo, enquanto quem tem só IPv4 vê o site novo. O sintoma é
-"o site abre no computador e não no celular", e some e volta sem explicação.
+**O `AAAA` é a pegadinha deste caso, e muda junto com o `A`.** Se ele
+continuar apontando para a Hostinger, quem tem IPv6 — a maioria das operadoras
+móveis — continua caindo no redirecionamento antigo, enquanto quem tem só IPv4
+vê o site novo. O sintoma é "o site abre no computador e não no celular", e some
+e volta sem explicação.
 
-Rode `curl -6 ifconfig.me` na VPS:
+Os dois endereços IPv6 estão no mesmo bloco `2a02:4780::/32`, porque a VPS também
+é da Hostinger. Confira dígito por dígito ao colar: a mudança inteira é trocar
+`13:983:0:382c:4065:2` por `95:faa9::1`.
 
-- **respondeu um endereço** → edite o `AAAA` para esse valor;
-- **falhou** → **apague o registro `AAAA`**. A VPS não tem IPv6, e um `AAAA`
-  errado quebra o site para quem tem.
+> **O `AAAA` também decide o certificado.** O Let's Encrypt prefere IPv6 quando
+> existe um `AAAA`. Se ele ainda apontar para a Hostinger no passo 5, a
+> validação bate lá e o `certbot` falha, mesmo com o `A` já correto.
 
 ### Manter como está
 
@@ -100,10 +112,15 @@ O `A` tem TTL de 1800 segundos, então a troca leva até meia hora. Confira de
 qualquer máquina:
 
 ```bash
-nslookup gasigliaadvocacia.com.br            # tem de responder 2.25.116.130
-nslookup www.gasigliaadvocacia.com.br        # idem
-nslookup -type=MX gasigliaadvocacia.com.br   # tem de continuar mx1/mx2.hostinger.com
+nslookup -type=A gasigliaadvocacia.com.br         # 2.25.116.130
+nslookup -type=AAAA gasigliaadvocacia.com.br      # 2a02:4780:95:faa9::1
+nslookup -type=A www.gasigliaadvocacia.com.br     # 2.25.116.130
+nslookup -type=MX gasigliaadvocacia.com.br        # mx1 e mx2.hostinger.com, inalterados
 ```
+
+Antes da mudança, os dois primeiros respondem `89.117.7.39` e
+`2a02:4780:13:983:0:382c:4065:2`. Se o `AAAA` continuar nesse valor depois de
+salvar, a edição dele não pegou — volte ao painel antes de seguir para o passo 5.
 
 **Os passos 2 a 4 não dependem do DNS**; o certificado (passo 5) depende.
 
