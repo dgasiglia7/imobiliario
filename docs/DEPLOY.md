@@ -177,6 +177,111 @@ cd /home/dgasiglia/imobiliario && ./deploy.sh
 O script faz `git pull` e confere que o nginx voltou 200. Não há build nem
 serviço para reiniciar.
 
+
+## 7. Medição (Umami)
+
+O site é medido pelo **mesmo painel do Ultra Distância**,
+`https://stats.ultradistancia.com.br`. Não sobe contêiner novo e não se aloca
+porta: um painel atende quantos sites você quiser, cada um com seu `Website ID`.
+
+O rastreador é servido **pelo próprio domínio**, em
+`https://gasigliaadvocacia.com.br/stats/script.js`, e não pelo subdomínio do
+painel. É isso que mantém a medição em primeira parte, fora do alcance dos
+bloqueadores. O desenho e o porquê estão em
+[`../../infra/UMAMI.md`](../../infra/UMAMI.md).
+
+O Umami não usa cookies nem coleta dado pessoal, o que evita a exigência de
+banner de consentimento.
+
+### 7.1 Criar o site no painel
+
+Em `https://stats.ultradistancia.com.br` → *Settings* → *Websites* →
+*Add website*:
+
+| Campo | Valor |
+| --- | --- |
+| Name | `Imobiliário` |
+| Domain | `gasigliaadvocacia.com.br` |
+
+Copie o `Website ID` que aparece depois de salvar.
+
+### 7.2 Pôr o ID na página
+
+Diferente do Ultra Distância, aqui **não há variável de ambiente nem build**: o
+site é estático, então o ID fica escrito no HTML. No `index.html`, dentro do
+`<head>`, troque o valor de `data-website-id`:
+
+```html
+<script defer src="/stats/script.js"
+        data-website-id="COLE-AQUI-O-WEBSITE-ID"></script>
+```
+
+Comite, e na VPS rode `./deploy.sh`.
+
+### 7.3 Publicar o rastreador no nginx
+
+**Não copie o arquivo do repositório por cima do que está na VPS.** O
+`certbot` já acrescentou a porta 443, o certificado e o redirecionamento ao
+arquivo em produção; recopiar desfaria tudo isso e o site voltaria a ser só
+HTTP. O arquivo versionado serve para uma instalação nova.
+
+Acrescente **uma linha** ao arquivo que já está rodando:
+
+```bash
+sudo cp /etc/nginx/sites-available/imobiliario \
+        /etc/nginx/sites-available/imobiliario.bak
+sudo nano /etc/nginx/sites-available/imobiliario
+```
+
+A linha é esta, e vai **dentro** do bloco que tem o `root` e o `location /`,
+que depois do certbot é o bloco do 443:
+
+```nginx
+    include /home/dgasiglia/infra/umami/nginx-stats.conf;
+```
+
+Um bom lugar é logo depois que o `location ~ /\. { … }` fechar. A ordem das
+diretivas dentro do `server` não importa para o nginx; o que importa é estar
+dentro das chaves do bloco certo.
+
+O `include` puxa o arquivo de onde ele está, em vez de duplicar o conteúdo.
+Uma correção futura no `nginx-stats.conf` chega à produção com `git pull` no
+repositório `infra` e um reload, sem reabrir o arquivo do nginx.
+
+Se o repositório `infra` ainda não estiver na VPS:
+
+```bash
+cd /home/dgasiglia && git clone git@github.com:dgasiglia7/infra.git
+```
+
+Valide e recarregue:
+
+```bash
+sudo nginx -t            # valida ANTES de recarregar
+sudo systemctl reload nginx
+```
+
+Para desistir e voltar ao estado anterior:
+
+```bash
+sudo cp /etc/nginx/sites-available/imobiliario.bak \
+        /etc/nginx/sites-available/imobiliario
+```
+
+### 7.4 Conferir
+
+```bash
+curl -sI https://gasigliaadvocacia.com.br/stats/script.js | head -1
+curl -s https://gasigliaadvocacia.com.br/ | grep -o 'data-website-id="[^"]*"'
+```
+
+| Resposta | O que significa |
+| --- | --- |
+| `200` e o ID preenchido | certo — abra o site e a visita aparece no painel em segundos |
+| `200` mas o ID é `COLE-AQUI-O-WEBSITE-ID` | falta o passo 7.2 |
+| `404` | o `include` não entrou no bloco que tem o `location /` |
+| `502` | o nginx está certo, mas o contêiner do Umami não responde: `docker compose ps` na pasta `infra/umami` |
+
 ## Conferência depois de publicar
 
 - `https://gasigliaadvocacia.com.br` abre a landing page, com cadeado.
@@ -184,6 +289,7 @@ serviço para reiniciar.
 - `https://gasigliaadvocacia.com` continua abrindo o WordPress, intocado.
 - Enviar e receber um e-mail em `@gasigliaadvocacia.com.br`.
 - Colar o link no WhatsApp: a prévia mostra a foto da equipe.
+- A visita aparece em `https://stats.ultradistancia.com.br`, no site `Imobiliário`.
 
 ## O que a página ainda busca de fora
 

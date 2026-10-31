@@ -32,6 +32,20 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231C1B19'/%3E%3Cpath d='M32 14 12 30h6v20h28V30h6z' fill='%23B89146'/%3E%3C/svg%3E">
 
   <!-- ============================================================
+       MEDIÇÃO (Umami, no mesmo painel do Ultra Distância)
+       O script é servido pelo próprio domínio, em /stats/script.js, por um
+       include do nginx — ver docs/DEPLOY.md. Isso mantém a medição em
+       primeira parte, fora do alcance dos bloqueadores.
+       O Umami não usa cookies nem coleta dado pessoal.
+
+       SUBSTITUA data-website-id pelo ID gerado em
+       Settings → Websites → Add website, no painel stats.ultradistancia.com.br.
+       Com o valor abaixo, o script carrega mas nada é contado.
+       ============================================================ -->
+  <script defer src="/stats/script.js"
+          data-website-id="COLE-AQUI-O-WEBSITE-ID"></script>
+
+  <!-- ============================================================
        FONTES E BIBLIOTECAS (CDN)
        ============================================================ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
