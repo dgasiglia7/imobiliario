@@ -174,8 +174,16 @@ mesmos blocos, e renova sozinho. É o mesmo certbot dos outros projetos.
 cd /home/dgasiglia/imobiliario && ./deploy.sh
 ```
 
-O script faz `git pull` e confere que o nginx voltou 200. Não há build nem
-serviço para reiniciar.
+O script faz `git pull` e confere, pelo HTTPS, que o nginx voltou 200. Avisa
+também se o rastreador do Umami parou de responder, sem falhar por isso. Não há
+build nem serviço para reiniciar.
+
+Se o `./deploy.sh` responder `Permission denied`, o bit de execução não chegou
+na VPS. Traga de novo e rode:
+
+```bash
+cd /home/dgasiglia/imobiliario && git pull && chmod +x deploy.sh && ./deploy.sh
+```
 
 
 ## 7. Medição (Umami)
