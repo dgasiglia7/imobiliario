@@ -203,20 +203,27 @@ Em `https://stats.ultradistancia.com.br` → *Settings* → *Websites* →
 | Name | `Imobiliário` |
 | Domain | `gasigliaadvocacia.com.br` |
 
-Copie o `Website ID` que aparece depois de salvar.
+Feito em outubro de 2026. O `Website ID` gerado foi
+`550d19d0-b832-4380-bb1a-5dd45f5c3a53`, e já está no `index.html`.
+
+O painel mostra um *Tracking code* apontando para
+`https://stats.ultradistancia.com.br/script.js`. **Não use esse endereço.** Ele
+faria a medição depender de outro domínio e cair nos bloqueadores. O que vale é
+o `/stats/script.js` do passo 7.3.
 
 ### 7.2 Pôr o ID na página
 
 Diferente do Ultra Distância, aqui **não há variável de ambiente nem build**: o
-site é estático, então o ID fica escrito no HTML. No `index.html`, dentro do
-`<head>`, troque o valor de `data-website-id`:
+site é estático, então o ID fica escrito no HTML. A tag já está no `<head>` do
+`index.html`:
 
 ```html
 <script defer src="/stats/script.js"
-        data-website-id="COLE-AQUI-O-WEBSITE-ID"></script>
+        data-website-id="550d19d0-b832-4380-bb1a-5dd45f5c3a53"></script>
 ```
 
-Comite, e na VPS rode `./deploy.sh`.
+Para medir outro site estático um dia, é esta linha que muda — o `src` continua
+igual, só o ID troca. Depois de editar, comite e rode `./deploy.sh` na VPS.
 
 ### 7.3 Publicar o rastreador no nginx
 
@@ -278,7 +285,7 @@ curl -s https://gasigliaadvocacia.com.br/ | grep -o 'data-website-id="[^"]*"'
 | Resposta | O que significa |
 | --- | --- |
 | `200` e o ID preenchido | certo — abra o site e a visita aparece no painel em segundos |
-| `200` mas o ID é `COLE-AQUI-O-WEBSITE-ID` | falta o passo 7.2 |
+| `200` mas o ID vem vazio | a tag saiu do `head` — confira o `index.html` |
 | `404` | o `include` não entrou no bloco que tem o `location /` |
 | `502` | o nginx está certo, mas o contêiner do Umami não responde: `docker compose ps` na pasta `infra/umami` |
 
