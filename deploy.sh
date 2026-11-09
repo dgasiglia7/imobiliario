@@ -25,6 +25,17 @@ else
   echo "       ver docs/DEPLOY.md, passo 8" >&2
 fi
 
+# O bloco da rota /api/lead mora num snippet do nginx. Se o arquivo do
+# repositorio mudou, a mudanca sobe junto com as paginas — assim ninguem
+# precisa editar a mao o arquivo do site, que o certbot tambem mexe.
+SNIPPET=/etc/nginx/snippets/imobiliario-lead.conf
+if [ -f "$SNIPPET" ] && ! cmp -s deploy/nginx-lead-location.conf "$SNIPPET"; then
+  echo "==> atualizando a rota /api/lead no nginx"
+  sudo install -m 644 deploy/nginx-lead-location.conf "$SNIPPET"
+  sudo nginx -t
+  sudo systemctl reload nginx
+fi
+
 DOMINIO="$(grep -m1 -oP 'server_name \K[^;]+' deploy/nginx-imobiliario.conf)"
 
 # Confere pelo HTTPS, resolvendo o domínio para a própria máquina: o nginx

@@ -383,24 +383,34 @@ reiniciando. Criar a pasta e dar `systemctl restart` resolve.
 
 ### 8.4 nginx
 
-A zona do limite de taxa vai em `conf.d/`, porque `limit_req_zone` só vale no
-contexto `http` — dentro de um `server { … }` o nginx recusa a configuração
-inteira.
-
 ```bash
-sudo cp /home/dgasiglia/imobiliario/deploy/nginx-lead-ratelimit.conf         /etc/nginx/conf.d/imobiliario-lead-ratelimit.conf
+/home/dgasiglia/imobiliario/deploy/instalar-nginx-lead.sh
 ```
 
-Depois acrescente o `location = /api/lead` ao bloco do site. O trecho pronto
-está em [`../deploy/nginx-imobiliario.conf`](../deploy/nginx-imobiliario.conf);
-copie de lá para `/etc/nginx/sites-available/imobiliario`, dentro do `server`
-que atende `gasigliaadvocacia.com.br` **na porta 443** (o certbot duplicou o
-bloco; o de porta 80 só redireciona).
+Pede `sudo` sozinho. Ele instala a zona do limite de taxa em `conf.d/` e o
+bloco da rota em `/etc/nginx/snippets/imobiliario-lead.conf`, acrescenta o
+`include` ao `server` certo, roda `nginx -t`, recarrega e confere que um POST
+vazio em `/api/lead` responde `422`. Pode rodar de novo quantas vezes quiser.
 
-```bash
-sudo nginx -t && sudo systemctl reload nginx
-```
+O que ele faz que a mão erra: achar o `server` certo. O certbot deixou três
+blocos neste arquivo — o do domínio na 443, o do `www` na 443 e o da porta 80
+que só redireciona. A rota tem que entrar no primeiro; nos outros dois ela não
+serviria para nada. O script procura o bloco que escuta na **443** e atende
+`gasigliaadvocacia.com.br` **sem `www`**, e se não achar, recusa em vez de
+chutar.
 
+Antes de mexer no arquivo do site ele guarda uma cópia com data no nome. Se o
+`nginx -t` reprovar, a cópia volta e nada é recarregado: um site fora do ar é
+pior do que um formulário fora do ar.
+
+A zona do limite de taxa vai em `conf.d/`, e não junto do site, porque
+`limit_req_zone` só vale no contexto `http` — dentro de um `server { … }` o
+nginx recusa a configuração inteira.
+
+O bloco da rota mora num snippet pelo mesmo motivo de higiene: daí em diante,
+mudar a rota é trocar [`../deploy/nginx-lead-location.conf`](../deploy/nginx-lead-location.conf)
+e publicar. O `deploy.sh` copia o snippet quando ele muda e recarrega o nginx
+sozinho — ninguém volta a editar à mão o arquivo em que o certbot também mexe.
 ### 8.5 Conferir
 
 Um POST vazio tem que ser **recusado**, sem criar lead nenhum:
