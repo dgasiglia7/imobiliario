@@ -92,9 +92,17 @@ echo "==> nginx recarregado"
 # Um POST vazio tem que ser RECUSADO com 422, sem criar lead nenhum. Resolve o
 # dominio para a propria maquina: o nginx precisa do nome certo para escolher
 # o bloco e o certificado.
-CODIGO="$(curl -s -o /dev/null -w '%{http_code}' -X POST \
-  -H 'Content-Type: application/json' -d '{}' \
-  --resolve "${DOMINIO}:443:127.0.0.1" "https://${DOMINIO}/api/lead")"
+#
+# Tenta varias vezes: o `reload` do nginx e gracioso, e por alguns instantes os
+# workers antigos continuam atendendo com a configuracao velha. A primeira
+# resposta pode ser o 404 do `try_files` sem que haja nada de errado.
+for tentativa in $(seq 1 10); do
+  CODIGO="$(curl -s -o /dev/null -w '%{http_code}' -X POST \
+    -H 'Content-Type: application/json' -d '{}' \
+    --resolve "${DOMINIO}:443:127.0.0.1" "https://${DOMINIO}/api/lead")"
+  [ "$CODIGO" = "422" ] && break
+  sleep 1
+done
 
 if [ "$CODIGO" != "422" ]; then
   echo "ERRO: /api/lead respondeu ${CODIGO}, esperado 422" >&2
