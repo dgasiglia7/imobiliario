@@ -16,6 +16,9 @@ git pull --ff-only
 if [ -f lead/.env ]; then
   echo "==> servico de leads"
   ( cd lead && npm ci --omit=dev )
+  # A unidade declara ReadWritePaths em lead/data e o systemd monta esse
+  # caminho antes de executar. Sem a pasta, o start morre em 226/NAMESPACE.
+  mkdir -p lead/data && chmod 700 lead/data
   sudo systemctl restart imobiliario-lead
 else
   echo "AVISO: lead/.env nao existe; o formulario fica fora do ar." >&2

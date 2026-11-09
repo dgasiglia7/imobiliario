@@ -366,6 +366,7 @@ está no `.gitignore` e nunca vai para o GitHub.
 
 ```bash
 cd /home/dgasiglia/imobiliario/lead && npm ci --omit=dev
+mkdir -p data && chmod 700 data
 sudo cp /home/dgasiglia/imobiliario/deploy/imobiliario-lead.service         /etc/systemd/system/imobiliario-lead.service
 sudo systemctl daemon-reload
 sudo systemctl enable --now imobiliario-lead
@@ -374,6 +375,11 @@ sudo systemctl status imobiliario-lead --no-pager
 
 O serviço se recusa a subir se faltar qualquer variável de ambiente. É
 proposital: falhar alto é melhor do que subir e descartar lead em silêncio.
+
+O `mkdir` não é detalhe: a unidade declara `ReadWritePaths=.../lead/data`, e o
+systemd monta esse caminho **antes** de executar o processo. Se a pasta não
+existir, o serviço nem chega a rodar — morre com `status=226/NAMESPACE` e fica
+reiniciando. Criar a pasta e dar `systemctl restart` resolve.
 
 ### 8.4 nginx
 
