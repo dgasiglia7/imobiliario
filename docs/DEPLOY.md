@@ -20,14 +20,16 @@ nada.**
 
 ## Porta
 
-**Nenhuma.** O registro de portas de todos os projetos é
-[`../../infra/PORTAS.md`](../../infra/PORTAS.md), e lá o `imobiliario` já consta
-como site estático que não sobe servidor e não ocupa porta — junto com o
-`medijur` e o `prevjur`. Não há `-p`, não há `proxy_pass`, não há systemd.
+**3006**, só para o formulário. O registro de portas de todos os projetos é
+[`../../infra/PORTAS.md`](../../infra/PORTAS.md), e a linha está reservada lá.
 
-Isso vale em desenvolvimento e em produção. Localmente, abrir o `index.html` no
-navegador basta. Se precisar de um servidor local, use a faixa de teste `39xxx`
-da tabela, nunca a faixa `30xx` dos projetos Next.
+As páginas continuam estáticas: o nginx as serve direto do disco, sem passar
+por processo nenhum. A única exceção é `/api/lead`, que vai para o serviço em
+`lead/` — ver o passo 8.
+
+Localmente, abrir o `index.html` no navegador basta para mexer no visual. Se
+precisar de um servidor local, use a faixa de teste `39xxx` da tabela, nunca a
+faixa `30xx` dos projetos Next.
 
 ## 1. DNS (no painel da Hostinger)
 
@@ -174,9 +176,13 @@ mesmos blocos, e renova sozinho. É o mesmo certbot dos outros projetos.
 cd /home/dgasiglia/imobiliario && ./deploy.sh
 ```
 
-O script faz `git pull` e confere, pelo HTTPS, que o nginx voltou 200. Avisa
-também se o rastreador do Umami parou de responder, sem falhar por isso. Não há
-build nem serviço para reiniciar.
+O script faz `git pull`, confere pelo HTTPS que o nginx voltou 200 e avisa se o
+rastreador do Umami parou de responder, sem falhar por isso.
+
+Se `lead/.env` existir, ele também instala as dependências do serviço de leads,
+reinicia o `imobiliario-lead` e confere o formulário — um POST vazio em
+`/api/lead` tem que voltar `422`. Qualquer outra resposta falha o deploy, porque
+um formulário quebrado perde cliente em silêncio.
 
 Se o `./deploy.sh` responder `Permission denied`, o bit de execução não chegou
 na VPS. Traga de novo e rode:
@@ -297,6 +303,125 @@ curl -s https://gasigliaadvocacia.com.br/ | grep -o 'data-website-id="[^"]*"'
 | `404` | o `include` não entrou no bloco que tem o `location /` |
 | `502` | o nginx está certo, mas o contêiner do Umami não responde: `docker compose ps` na pasta `infra/umami` |
 
+## 8. Formulário de avaliação (envio do lead)
+
+Até aqui o formulário validava os campos e mostrava um aviso pedindo que a
+pessoa usasse o WhatsApp: não havia para onde mandar. Este passo liga o envio.
+
+### Como funciona
+
+O navegador faz `POST` para `/api/lead`, **no próprio domínio**. O nginx aplica
+o limite de taxa e repassa para o serviço em `127.0.0.1:3006`, que valida de
+novo, grava o lead em disco e dispara o e-mail pelo SMTP da Hostinger.
+
+Mesma origem é o ponto do desenho: não há CORS, e nenhuma credencial existe no
+lado do cliente. A senha de aplicativo do SMTP fica em `lead/.env`, na VPS.
+
+A ordem importa: **grava antes de enviar**. Se o SMTP estiver fora do ar, o
+lead está salvo em `lead/data/leads.jsonl` e dá para recuperar. Na ordem
+inversa, uma falha de envio seria um cliente perdido achando que foi atendido.
+
+### 8.1 A caixa e a senha de aplicativo
+
+O remetente é `contato@gasigliaadvocacia.com.br`, caixa da Hostinger. A senha
+é uma **senha de aplicativo**, não a senha de login:
+
+hPanel → **E-mails** → `gasigliaadvocacia.com.br` → **Mailboxes** → os três
+pontos ao lado da caixa → **App passwords** → **Generate**.
+
+Dê um nome que se explique daqui a um ano, como `smtp-site-imobiliario`, e
+copie na hora: ela aparece **uma única vez**. Se perder, gere outra e revogue a
+anterior — é justamente para isso que existem várias por caixa.
+
+Usar senha de aplicativo em vez da senha da caixa não é formalidade. Se a VPS
+for comprometida, você revoga aquela entrada e o acesso ao e-mail do escritório
+continua intacto.
+
+> A caixa fica numa conta Hostinger diferente da que hospeda a VPS. Isso não
+> atrapalha: SMTP autenticado não sabe de onde parte a conexão. O que muda é
+> que só quem tem acesso àquela conta consegue gerar ou revogar a senha.
+
+### 8.2 Arquivo de ambiente
+
+```bash
+cd /home/dgasiglia/imobiliario/lead
+cp .env.example .env
+chmod 600 .env
+nano .env
+```
+
+Preencha `SMTP_PASS` com a senha de aplicativo e confira `MAIL_TO`. O `.env`
+está no `.gitignore` e nunca vai para o GitHub.
+
+### 8.3 Dependências e serviço
+
+```bash
+cd /home/dgasiglia/imobiliario/lead && npm ci --omit=dev
+sudo cp /home/dgasiglia/imobiliario/deploy/imobiliario-lead.service         /etc/systemd/system/imobiliario-lead.service
+sudo systemctl daemon-reload
+sudo systemctl enable --now imobiliario-lead
+sudo systemctl status imobiliario-lead --no-pager
+```
+
+O serviço se recusa a subir se faltar qualquer variável de ambiente. É
+proposital: falhar alto é melhor do que subir e descartar lead em silêncio.
+
+### 8.4 nginx
+
+A zona do limite de taxa vai em `conf.d/`, porque `limit_req_zone` só vale no
+contexto `http` — dentro de um `server { … }` o nginx recusa a configuração
+inteira.
+
+```bash
+sudo cp /home/dgasiglia/imobiliario/deploy/nginx-lead-ratelimit.conf         /etc/nginx/conf.d/imobiliario-lead-ratelimit.conf
+```
+
+Depois acrescente o `location = /api/lead` ao bloco do site. O trecho pronto
+está em [`../deploy/nginx-imobiliario.conf`](../deploy/nginx-imobiliario.conf);
+copie de lá para `/etc/nginx/sites-available/imobiliario`, dentro do `server`
+que atende `gasigliaadvocacia.com.br` **na porta 443** (o certbot duplicou o
+bloco; o de porta 80 só redireciona).
+
+```bash
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+### 8.5 Conferir
+
+Um POST vazio tem que ser **recusado**, sem criar lead nenhum:
+
+```bash
+curl -s -o /dev/null -w '%{http_code}
+' -X POST   -H 'Content-Type: application/json' -d '{}'   https://gasigliaadvocacia.com.br/api/lead
+```
+
+| Resposta | O que significa |
+| --- | --- |
+| `422` | certo — chegou ao serviço e a validação recusou |
+| `502` | o nginx está certo, mas o serviço não responde: `systemctl status imobiliario-lead` |
+| `404` | o `location = /api/lead` não entrou no bloco da porta 443 |
+| `429` | limite de taxa; espere um minuto |
+
+Depois faça um envio de verdade pelo site e confirme que o e-mail chega. Se
+não chegar, o lead ainda está gravado:
+
+```bash
+tail -n 5 /home/dgasiglia/imobiliario/lead/data/leads.jsonl
+sudo journalctl -u imobiliario-lead -n 50 --no-pager
+```
+
+A linha `GRAVADO MAS NAO ENVIADO` no log é o sinal de que o SMTP falhou e há
+lead esperando resgate.
+
+### 8.6 Dados pessoais
+
+O lead é nome, telefone, e-mail e o relato de um conflito jurídico: matéria de
+sigilo profissional e dado pessoal sob a LGPD.
+
+`lead/data/` está no `.gitignore` e o arquivo é gravado com `chmod 600`. Depois
+que o lead virou e-mail e entrou no fluxo do escritório, a cópia na VPS é risco
+sem benefício — vale definir de quanto em quanto tempo limpar o arquivo.
+
 ## Conferência depois de publicar
 
 - `https://gasigliaadvocacia.com.br` abre a landing page, com cadeado.
@@ -305,6 +430,7 @@ curl -s https://gasigliaadvocacia.com.br/ | grep -o 'data-website-id="[^"]*"'
 - Enviar e receber um e-mail em `@gasigliaadvocacia.com.br`.
 - Colar o link no WhatsApp: a prévia mostra a foto da equipe.
 - A visita aparece em `https://stats.ultradistancia.com.br`, no site `Imobiliário`.
+- Um POST vazio em `/api/lead` responde `422`, e um envio pelo formulário chega por e-mail.
 
 ## O que a página ainda busca de fora
 

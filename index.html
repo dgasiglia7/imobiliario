@@ -886,9 +886,11 @@
 
     <!-- ============================================================
          12. FORMULÁRIO DE CONTATO
-         Integração: defina CONFIG.FORM_ENDPOINT no script para enviar os
-         dados a uma API, CRM ou serviço de e-mail. Sem endpoint, a página
-         não simula envio e orienta o visitante a usar WhatsApp ou e-mail.
+         O envio vai para CONFIG.FORM_ENDPOINT, hoje /api/lead: o mesmo
+         domínio, servido pelo nginx, que repassa ao serviço em lead/.
+         Mesma origem, então não há CORS nem credencial no navegador.
+         Com o endpoint vazio, a página não simula envio — mostra um aviso
+         e orienta o visitante a usar WhatsApp ou e-mail.
          ============================================================ -->
     <section id="contato">
       <div class="container">
@@ -1129,7 +1131,7 @@
       WHATSAPP_MESSAGE: "Olá, encontrei o site do escritório e gostaria de receber informações sobre a avaliação de um problema relacionado a um imóvel comprado na planta.",
       // URL da API, CRM ou serviço de e-mail que receberá o formulário (POST JSON).
       // Deixe vazio enquanto não houver backend: a página NÃO simulará envio.
-      FORM_ENDPOINT: "",
+      FORM_ENDPOINT: "/api/lead",
       // E-mail exibido como alternativa quando não há endpoint configurado
       CONTACT_EMAIL: "eduardo@gasigliaadvocacia.com.br"
     };

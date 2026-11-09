@@ -1,14 +1,26 @@
 #!/usr/bin/env bash
 # Publica a versão mais recente na VPS. Ver docs/DEPLOY.md.
 #
-# Site estático: publicar é só trazer os arquivos. Não há build, não há
-# serviço para reiniciar e não há porta para conferir.
+# As páginas são estáticas: publicar é trazer os arquivos. O formulário tem um
+# serviço próprio em lead/, que precisa de dependências e de restart.
 set -euo pipefail
 
 cd "$(dirname "$0")"
 
 echo "==> git pull"
 git pull --ff-only
+
+# O serviço do formulário só existe depois que .env foi criado na VPS a partir
+# de lead/.env.example. Até lá, publicar as páginas continua funcionando: o
+# formulário responde 502 e o visitante vê o aviso para usar WhatsApp.
+if [ -f lead/.env ]; then
+  echo "==> servico de leads"
+  ( cd lead && npm ci --omit=dev )
+  sudo systemctl restart imobiliario-lead
+else
+  echo "AVISO: lead/.env nao existe; o formulario fica fora do ar." >&2
+  echo "       ver docs/DEPLOY.md, passo 8" >&2
+fi
 
 DOMINIO="$(grep -m1 -oP 'server_name \K[^;]+' deploy/nginx-imobiliario.conf)"
 
@@ -31,6 +43,26 @@ RASTREADOR="$(curl -s -o /dev/null -w '%{http_code}' \
 if [ "$RASTREADOR" != "200" ]; then
   echo "AVISO: /stats/script.js respondeu ${RASTREADOR}; a medição está fora." >&2
   echo "       ver docs/DEPLOY.md, passo 7.3" >&2
+fi
+
+# Confere que o formulário está de pé sem criar um lead falso: um POST vazio
+# tem que ser RECUSADO com 422. Qualquer outra coisa — 502, 404, 200 — quer
+# dizer que o caminho não chegou ao serviço ou que a validação não está ativa.
+if [ -f lead/.env ]; then
+  for tentativa in $(seq 1 10); do
+    FORMULARIO="$(curl -s -o /dev/null -w '%{http_code}' -X POST \
+      -H 'Content-Type: application/json' -d '{}' \
+      --resolve "${DOMINIO}:443:127.0.0.1" "https://${DOMINIO}/api/lead")"
+    [ "$FORMULARIO" = "422" ] && break
+    sleep 1
+  done
+  if [ "$FORMULARIO" != "422" ]; then
+    echo "ERRO: /api/lead respondeu ${FORMULARIO}, esperado 422" >&2
+    echo "      confira: sudo systemctl status imobiliario-lead" >&2
+    echo "                sudo journalctl -u imobiliario-lead -n 30" >&2
+    exit 1
+  fi
+  echo "    formulario respondendo"
 fi
 
 echo "deploy concluido: ${DOMINIO} respondendo 200"

@@ -1,0 +1,36 @@
+# /etc/systemd/system/imobiliario-lead.service — ver docs/DEPLOY.md, passo 8.
+#
+# Mesmo desenho das unidades ultra-distancia e backhand, que já dividem esta
+# VPS: pasta própria em /home/dgasiglia, porta própria registrada em
+# infra/PORTAS.md, bloco próprio no nginx. Nenhum projeto sabe do outro.
+#
+# O site em si continua estático — o nginx serve os arquivos do disco. Este
+# serviço existe só para o formulário, em /api/lead.
+
+[Unit]
+Description=Imobiliario — recebimento de leads do formulario
+After=network.target
+
+[Service]
+Type=simple
+User=dgasiglia
+WorkingDirectory=/home/dgasiglia/imobiliario/lead
+
+# A senha de aplicativo do SMTP vive aqui, com chmod 600, fora do Git.
+# O serviço se recusa a subir se faltar qualquer variável — falhar alto é
+# melhor do que subir e descartar lead em silêncio.
+EnvironmentFile=/home/dgasiglia/imobiliario/lead/.env
+
+ExecStart=/usr/bin/node server.mjs
+Restart=on-failure
+RestartSec=5
+
+# O processo só precisa ler o próprio código e escrever em lead/data.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/dgasiglia/imobiliario/lead/data
+
+[Install]
+WantedBy=multi-user.target
