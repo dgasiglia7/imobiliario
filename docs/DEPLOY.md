@@ -308,6 +308,15 @@ curl -s https://gasigliaadvocacia.com.br/ | grep -o 'data-website-id="[^"]*"'
 Até aqui o formulário validava os campos e mostrava um aviso pedindo que a
 pessoa usasse o WhatsApp: não havia para onde mandar. Este passo liga o envio.
 
+**Traga o código primeiro.** A pasta `lead/` é nova; sem isto, os comandos
+abaixo falham com `No such file or directory`:
+
+```bash
+cd /home/dgasiglia/imobiliario && git pull --ff-only && ls
+```
+
+`lead` tem que aparecer na listagem antes de seguir.
+
 ### Como funciona
 
 O navegador faz `POST` para `/api/lead`, **no próprio domínio**. O nginx aplica
