@@ -1,0 +1,8 @@
+# Credenciais do serviço de leads: senha de aplicativo do SMTP. Só existem na
+# VPS, criadas a partir de lead/.env.example.
+lead/.env
+
+# Leads gravados em produção: dados pessoais de quem preencheu o formulário.
+lead/data/
+
+lead/node_modules/

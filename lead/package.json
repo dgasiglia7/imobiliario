@@ -1,0 +1,16 @@
+{
+  "name": "imobiliario-lead",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Recebe o formulário da landing page e entrega o lead por e-mail",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.16"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
