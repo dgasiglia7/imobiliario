@@ -174,7 +174,11 @@ function montarEmail(dados, meta) {
     // O cliente responde a partir daqui. O remetente continua sendo a caixa do
     // domínio: enviar "em nome" do visitante quebraria o SPF e mandaria o
     // aviso direto para o spam.
-    replyTo: `${dados.nome} <${dados.email}>`,
+    //
+    // Objeto, e não string montada à mão: o nome vem do visitante, e numa
+    // string `Fulano <e-mail>` um nome com vírgula ou com `<…>` viraria
+    // endereço extra no cabeçalho. Assim o nodemailer escapa o nome sozinho.
+    replyTo: { name: dados.nome, address: dados.email },
     subject: `Nova avaliação — ${dados.nome} — ${dados.tipo_problema}`,
     text: texto,
   };
