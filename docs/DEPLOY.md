@@ -447,6 +447,50 @@ sigilo profissional e dado pessoal sob a LGPD.
 que o lead virou e-mail e entrou no fluxo do escritório, a cópia na VPS é risco
 sem benefício — vale definir de quanto em quanto tempo limpar o arquivo.
 
+## 9. Prévia do link no WhatsApp e nas redes
+
+A imagem que aparece quando alguém cola o endereço do site vem das metatags
+`og:image` e `twitter:image`, no `<head>` do `index.html`. O arquivo é
+`assets/og-gasiglia-advocacia.jpg`, em 1200x630 — proporção que o Facebook
+recomenda e que o WhatsApp usa para mostrar a prévia grande, em vez da
+miniatura quadrada.
+
+**Trocar a foto do topo não troca essa imagem.** São arquivos diferentes, de
+propósito: o topo é 3:2 e a prévia é 1.91:1, e o mesmo recorte não serve nos
+dois. Se a foto do escritório mudar, gere a prévia de novo a partir da mesma
+origem e publique.
+
+### 9.1 Por que a antiga continua aparecendo
+
+Quem guarda a prévia é a Meta, não o site. Publicar a mudança não avisa
+ninguém: o WhatsApp continua mostrando o que leu da última vez, por semanas.
+São duas camadas de cache, e a ordem importa.
+
+**Primeiro, o cache da Meta.** Abra o
+[Sharing Debugger](https://developers.facebook.com/tools/debug/), cole
+`https://gasigliaadvocacia.com.br/` e clique em **Scrape Again**. A tela mostra
+qual imagem o robô está vendo — se já for a nova, a origem está correta. O
+WhatsApp lê desse mesmo cache.
+
+**Depois, o cache do aparelho.** A conversa onde o link já foi mandado guarda a
+miniatura antiga, e ela não se atualiza. Para conferir de verdade, mande o link
+numa conversa onde ele nunca apareceu — o "recado para mim mesmo" serve.
+
+Se precisar de uma prova imediata, sem esperar nada: mande
+`https://gasigliaadvocacia.com.br/?v=2`. O endereço é outro, então não há cache
+nenhum, e a página é a mesma. Serve para conferir, não para divulgar.
+
+### 9.2 Gerar a imagem de prévia
+
+Não há ImageMagick nem PIL nesta máquina. O recorte foi feito com o Chrome em
+modo headless desenhando num `canvas` — origem `assets/escritorio-equipe-origem.png`
+(1536x1024), recorte de 1536x806 a partir de `y=70`, reduzido para 1200x630 e
+salvo em JPEG a 86%.
+
+O `y=70` não é arbitrário: centralizar o recorte cortaria as cabeças da fila de
+trás. Se a foto mudar, confira o resultado antes de publicar — num retrato de
+equipe, o erro aparece como gente decapitada na prévia.
+
 ## Conferência depois de publicar
 
 - `https://gasigliaadvocacia.com.br` abre a landing page, com cadeado.
