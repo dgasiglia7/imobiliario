@@ -713,8 +713,15 @@
          player do YouTube só é carregado após o clique, preservando o
          desempenho da página.
          Para trocar um vídeo, altere o data-id do botão, o src da
-         miniatura (https://i.ytimg.com/vi/<ID>/oardefault.jpg),
+         miniatura (https://i.ytimg.com/vi/<ID>/sardefault.jpg),
          o texto alternativo, a etiqueta e o título.
+
+         sardefault, e não oardefault: é ali que o YouTube publica a capa
+         personalizada do Short, em 900x1600. O oardefault é um quadro
+         tirado do vídeo na publicação e NÃO muda quando a capa é trocada
+         depois — era por isso que a página mostrava capas antigas.
+         Nenhum dos dois endereços é documentado pelo YouTube; se o
+         sardefault falhar, o script da seção 6 cai para o oardefault.
          ============================================================ -->
     <section id="videos">
       <div class="container">
@@ -730,7 +737,7 @@
           <div class="col-12 col-md-6 col-lg-4 reveal">
             <article class="text-center">
               <div class="video-frame">
-                <img src="https://i.ytimg.com/vi/-K35yHq6hrs/oardefault.jpg" width="1080" height="1920"
+                <img src="https://i.ytimg.com/vi/-K35yHq6hrs/sardefault.jpg" width="900" height="1600"
                      alt="O advogado fala sobre o atraso na entrega das chaves pela construtora" loading="lazy" decoding="async">
                 <button type="button" class="video-play js-video" data-id="-K35yHq6hrs"
                         data-title="Comprou um imóvel na planta e a construtora atrasou a entrega das chaves?"
@@ -749,7 +756,7 @@
           <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="1">
             <article class="text-center">
               <div class="video-frame">
-                <img src="https://i.ytimg.com/vi/ZglbzTkvvPQ/oardefault.jpg" width="1080" height="1920"
+                <img src="https://i.ytimg.com/vi/ZglbzTkvvPQ/sardefault.jpg" width="900" height="1600"
                      alt="O advogado fala sobre a cobrança de condomínio e IPTU antes da entrega das chaves" loading="lazy" decoding="async">
                 <button type="button" class="video-play js-video" data-id="ZglbzTkvvPQ"
                         data-title="Comprou imóvel na planta e o boleto de condomínio e IPTU chegaram antes das chaves?"
@@ -768,7 +775,7 @@
           <div class="col-12 col-md-6 col-lg-4 reveal" data-delay="2">
             <article class="text-center">
               <div class="video-frame">
-                <img src="https://i.ytimg.com/vi/6YxznqgNAMU/oardefault.jpg" width="720" height="1280"
+                <img src="https://i.ytimg.com/vi/6YxznqgNAMU/sardefault.jpg" width="900" height="1600"
                      alt="O advogado fala sobre os limites de atuação do síndico e a convenção do condomínio" loading="lazy" decoding="async">
                 <button type="button" class="video-play js-video" data-id="6YxznqgNAMU"
                         data-title="Síndico não é dono do prédio. Síndico cumpre a convenção."
@@ -1243,6 +1250,19 @@
           para não pesar no carregamento inicial da página
        ------------------------------------------------------------ */
     (function setupVideos() {
+      // A capa vem de um endereço não documentado do YouTube (sardefault).
+      // Se ele deixar de existir, usa o quadro do vídeo (oardefault) em vez
+      // de deixar o cartão vazio. O `complete` cobre a imagem que já falhou
+      // antes de este script rodar.
+      document.querySelectorAll(".video-frame img").forEach(function (img) {
+        function recuar() {
+          if (img.src.indexOf("/sardefault.jpg") === -1) return;
+          img.src = img.src.replace("/sardefault.jpg", "/oardefault.jpg");
+        }
+        img.addEventListener("error", recuar);
+        if (img.complete && img.naturalWidth === 0 && img.currentSrc) recuar();
+      });
+
       document.querySelectorAll(".js-video").forEach(function (btn) {
         btn.addEventListener("click", function () {
           const frame = btn.closest(".video-frame");
